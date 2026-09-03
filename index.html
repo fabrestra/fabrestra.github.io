@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Fabrestra — автоматизация операционных процессов. Убираю ручную работу из бизнеса. Первый работающий процесс за 7 дней.">
+<meta property="og:title" content="Fabrestra — автоматизация операционных процессов">
+<meta property="og:description" content="Ваши люди перестанут делать то, что должна делать система. Первый работающий процесс — через 7 дней.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23C1440E'/%3E%3Crect x='7' y='9' width='18' height='3' fill='%23fff'/%3E%3Crect x='7' y='20' width='12' height='3' fill='%23fff'/%3E%3C/svg%3E">
+<title>Fabrestra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;800&family=Golos+Text:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+:root{
+  --ground:#E3E5E2; --surface:#F0F1EF; --surface-2:#D9DCD9;
+  --line:#C0C5C1; --line-soft:#D2D6D3;
+  --ink:#131719; --ink-mid:#57615F; --ink-dim:#7C8683;
+  --accent:#C1440E; --accent-deep:#8E300A; --accent-soft:#F4DCD1;
+  --signal:#B07C05; --signal-soft:#F0E2BE;
+  --steel:#47585F;
+  --f-d:"Bitter",Georgia,serif;
+  --f-b:"Golos Text","Segoe UI",system-ui,sans-serif;
+  --f-m:"IBM Plex Mono",Consolas,ui-monospace,monospace;
+  --w:1140px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0F1213; --surface:#181C1D; --surface-2:#212627;
+    --line:#2E3436; --line-soft:#232829;
+    --ink:#E5E7E4; --ink-mid:#97A09D; --ink-dim:#727B78;
+    --accent:#E4682F; --accent-deep:#B84A18; --accent-soft:#3B1E0F;
+    --signal:#E8B838; --signal-soft:#3A2F10;
+    --steel:#7E9299;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0F1213; --surface:#181C1D; --surface-2:#212627;
+  --line:#2E3436; --line-soft:#232829;
+  --signal:#E8B838; --signal-soft:#3A2F10;
+  --ink:#E5E7E4; --ink-mid:#97A09D; --ink-dim:#727B78;
+  --accent:#E4682F; --accent-deep:#B84A18; --accent-soft:#3B1E0F;
+  --steel:#7E9299;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--ground);color:var(--ink);
+  font-family:var(--f-b);font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+.w{max-width:var(--w);margin:0 auto;padding:0 26px}
+p{margin:0;max-width:64ch}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+.mono{font-family:var(--f-m);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim)}
+
+/* ---------- nav ---------- */
+nav{
+  position:sticky;top:0;z-index:50;background:var(--ground);
+  border-bottom:1px solid var(--line);
+}
+.navin{max-width:var(--w);margin:0 auto;padding:0 26px;height:64px;display:flex;align-items:center;gap:28px}
+.mark{
+  font-family:var(--f-d);font-weight:800;font-size:1.12rem;letter-spacing:.01em;
+  margin-right:auto;display:flex;align-items:center;gap:9px;text-decoration:none;
+}
+.mark .glyph{
+  width:22px;height:22px;flex:none;border:2px solid var(--accent);
+  position:relative;background:var(--accent-soft);
+}
+.mark .glyph::after{content:"";position:absolute;left:3px;top:3px;right:3px;height:2px;background:var(--accent)}
+.mark .glyph::before{content:"";position:absolute;left:3px;bottom:3px;right:8px;height:2px;background:var(--accent)}
+.navlinks{display:flex;gap:22px;font-size:.92rem}
+.navlinks a{text-decoration:none;color:var(--ink-mid)}
+.navlinks a:hover{color:var(--ink)}
+@media (max-width:760px){.navlinks{display:none}}
+
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  background:var(--accent);color:#fff;text-decoration:none;
+  font-weight:600;font-size:.94rem;padding:11px 20px;border:none;cursor:pointer;
+  font-family:var(--f-b);transition:background .18s ease,transform .18s ease;
+}
+.btn:hover{background:var(--accent-deep);transform:translateY(-1px)}
+.btn-ghost{
+  background:transparent;color:var(--ink);border:1px solid var(--line);
+}
+.btn-ghost:hover{background:var(--surface);border-color:var(--ink-dim);color:var(--ink)}
+.btn .arw{transition:transform .18s ease}
+.btn:hover .arw{transform:translateX(3px)}
+
+/* ---------- hero ---------- */
+.hero{padding:76px 0 60px;border-bottom:1px solid var(--line)}
+.herogrid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
+@media (max-width:940px){.herogrid{grid-template-columns:1fr;gap:38px}}
+h1{
+  font-family:var(--f-d);font-weight:800;
+  font-size:clamp(2.05rem,4.6vw,3.15rem);line-height:1.06;letter-spacing:-.02em;
+  margin:18px 0 20px;text-wrap:balance;
+}
+h1 em{font-style:normal;color:var(--accent)}
+.sub{font-size:1.1rem;color:var(--ink-mid);max-width:48ch}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+
+.stage{
+  border:1px solid var(--line);background:var(--surface);
+  padding:16px 16px 12px;position:relative;
+}
+.stage canvas{display:block;width:100%;height:280px}
+.stagecap{
+  display:flex;justify-content:space-between;gap:12px;
+  border-top:1px solid var(--line-soft);margin-top:12px;padding-top:10px;
+}
+
+/* ---------- band ---------- */
+.band{border-bottom:1px solid var(--line);background:var(--surface)}
+.bandgrid{display:grid;grid-template-columns:repeat(3,1fr)}
+@media (max-width:760px){.bandgrid{grid-template-columns:1fr}}
+.bcell{padding:26px 26px;border-right:1px solid var(--line-soft)}
+.bcell:last-child{border-right:none}
+@media (max-width:760px){.bcell{border-right:none;border-bottom:1px solid var(--line-soft)}}
+.bcell .big{
+  font-family:var(--f-d);font-weight:800;font-size:2.5rem;line-height:1;
+  letter-spacing:-.02em;color:var(--accent);font-variant-numeric:tabular-nums;
+}
+.bcell .big small{font-size:1.05rem;font-family:var(--f-b);font-weight:600;color:var(--ink);margin-left:6px}
+.bcell .cap{margin-top:9px;font-size:.93rem;color:var(--ink-mid);max-width:34ch}
+
+/* ---------- sections ---------- */
+section{padding:78px 0;border-bottom:1px solid var(--line)}
+.shead{margin-bottom:38px;max-width:62ch}
+h2{
+  font-family:var(--f-d);font-weight:800;
+  font-size:clamp(1.5rem,3.2vw,2.15rem);line-height:1.14;letter-spacing:-.018em;
+  margin:12px 0 12px;text-wrap:balance;
+}
+h3{font-family:var(--f-d);font-weight:600;font-size:1.12rem;margin:0 0 8px;letter-spacing:-.005em}
+.shead p{color:var(--ink-mid)}
+
+.cols3{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.cell{background:var(--ground);padding:26px 24px;display:flex;flex-direction:column;gap:10px}
+.cell .n{font-family:var(--f-m);font-size:11px;letter-spacing:.14em;color:var(--signal)}
+.hazard{
+  height:8px;margin-bottom:26px;
+  background:repeating-linear-gradient(45deg,var(--signal) 0 9px,var(--surface-2) 9px 18px);
+}
+.cell p{font-size:.96rem;color:var(--ink-mid)}
+
+/* ---------- process ---------- */
+.proc{position:relative;display:flex;flex-direction:column;gap:0}
+.prow{
+  display:grid;grid-template-columns:88px 1fr;gap:0;
+  border-left:2px solid var(--line);position:relative;
+}
+.prow .day{
+  padding:20px 0 20px 22px;font-family:var(--f-m);font-size:11.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dim);
+}
+.prow .txt{padding:20px 0 20px 6px}
+.prow .txt p{font-size:.97rem;color:var(--ink-mid);margin-top:5px}
+.prow::before{
+  content:"";position:absolute;left:-7px;top:26px;width:12px;height:12px;
+  background:var(--ground);border:2px solid var(--line);border-radius:50%;
+}
+.prow.on::before{border-color:var(--accent);background:var(--accent)}
+.prow.on .day{color:var(--accent)}
+.procfill{position:absolute;left:-2px;top:0;width:2px;background:var(--accent);height:0;transition:height .45s ease}
+@media (max-width:600px){.prow{grid-template-columns:1fr}.prow .day{padding-bottom:0}.prow .txt{padding-left:22px}}
+
+/* ---------- works ---------- */
+.works{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.work{
+  border:1px solid var(--line);background:var(--surface);
+  display:flex;flex-direction:column;
+  transition:transform .2s ease,border-color .2s ease;
+}
+.work:hover{transform:translateY(-3px);border-color:var(--accent)}
+.workshot{
+  height:150px;border-bottom:1px solid var(--line);position:relative;overflow:hidden;
+  background:var(--surface-2);
+}
+.workshot canvas{display:block;width:100%;height:100%}
+.workbody{padding:20px 22px 22px;display:flex;flex-direction:column;gap:9px;flex:1}
+.workbody p{font-size:.92rem;color:var(--ink-mid)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:12px}
+.chip{
+  font-family:var(--f-m);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+  border:1px solid var(--line);padding:3px 8px;color:var(--ink-dim);
+}
+.chip.live{border-color:var(--accent);color:var(--accent)}
+
+/* ---------- pricing ---------- */
+.prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.price{background:var(--ground);padding:26px 24px;display:flex;flex-direction:column;gap:12px}
+.price.key{background:var(--surface);position:relative}
+.price.key::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--accent)}
+.price .step{font-family:var(--f-m);font-size:11px;letter-spacing:.14em;color:var(--ink-dim)}
+.price .amt{font-family:var(--f-d);font-weight:800;font-size:1.72rem;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.price .amt span{font-size:.9rem;font-family:var(--f-b);font-weight:500;color:var(--ink-mid)}
+.price p{font-size:.92rem;color:var(--ink-mid)}
+
+/* ---------- about / cta ---------- */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:44px}
+@media (max-width:820px){.two{grid-template-columns:1fr;gap:28px}}
+ul.pl{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:11px}
+ul.pl li{position:relative;padding-left:22px;color:var(--ink-mid);font-size:.97rem}
+ul.pl li::before{content:"";position:absolute;left:0;top:.62em;width:9px;height:2px;background:var(--accent)}
+ul.pl li b{color:var(--ink);font-weight:600}
+
+.final{background:var(--surface);border:1px solid var(--line);padding:44px 40px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px}
+.final h2{margin:0}
+.final p{color:var(--ink-mid);text-align:center}
+.contacts{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:6px}
+
+footer{padding:34px 0 60px}
+.footin{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;justify-content:space-between}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .btn,.work{transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+
+<nav>
+  <div class="navin">
+    <a class="mark" href="#top"><span class="glyph"></span>FABRESTRA</a>
+    <div class="navlinks">
+      <a href="#problem">Что убираю</a>
+      <a href="#process">Как работаю</a>
+      <a href="#works">Работы</a>
+      <a href="#prices">Цены</a>
+    </div>
+    <a class="btn" href="#contact">Разбор за 20 минут <span class="arw">→</span></a>
+  </div>
+</nav>
+
+<div id="top"></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="w herogrid">
+    <div>
+      <div class="mono">Автоматизация операционных процессов</div>
+      <h1>Ваши люди перестанут делать то, что <em>должна делать система</em></h1>
+      <p class="sub">Нахожу в бизнесе ручную работу, которая обходится дороже всего, и убираю её. Первый работающий процесс — через 7 дней после старта, а не через полтора месяца.</p>
+      <div class="cta">
+        <a class="btn" href="#contact">Разбор за 20 минут <span class="arw">→</span></a>
+        <a class="btn btn-ghost" href="#prices">Сколько это стоит</a>
+      </div>
+    </div>
+    <div class="stage">
+      <canvas id="belt" aria-label="Схема: заявки в ручной обработке скапливаются у узкого места, в автоматизированной проходят без задержки"></canvas>
+      <div class="stagecap">
+        <span class="mono" id="capA">Вручную · в очереди 0</span>
+        <span class="mono" id="capB">С Fabrestra · обработано 0</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BAND -->
+<div class="band">
+  <div class="w"><div class="bandgrid">
+    <div class="bcell">
+      <div class="big"><span class="cnt" data-to="7">0</span><small>дней</small></div>
+      <div class="cap">от старта до первого процесса, который работает без человека</div>
+    </div>
+    <div class="bcell">
+      <div class="big"><span class="cnt" data-to="3">0</span><small>дня</small></div>
+      <div class="cap">операционный разбор: карта процессов с оценкой в часах и деньгах</div>
+    </div>
+    <div class="bcell">
+      <div class="big"><span class="cnt" data-to="1">0</span><small>процесс за раз</small></div>
+      <div class="cap">довожу до замеряемого результата, потом берусь за следующий</div>
+    </div>
+  </div></div>
+</div>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="w">
+    <div class="shead rv">
+      <div class="mono">01 — Диагноз</div>
+      <h2>Три места, где бизнес каждый день теряет деньги руками</h2>
+      <p>Это не про «внедрить ИИ». Это про конкретные операции, которые сотрудник повторяет по десять раз в день и на которые уходит рабочая неделя в месяц.</p>
+    </div>
+    <div class="hazard rv" aria-hidden="true"></div>
+    <div class="cols3 rv">
+      <div class="cell">
+        <span class="n">01</span>
+        <h3>Заявки обрабатываются вручную</h3>
+        <p>Менеджер копирует данные из формы в CRM, пишет первый ответ, ставит напоминание. Ошибается, забывает, уходит в отпуск. Половина заявок остывает раньше, чем до них доходят руки.</p>
+      </div>
+      <div class="cell">
+        <span class="n">02</span>
+        <h3>Отчёты собираются по кускам</h3>
+        <p>Выгрузка из одной системы, сведение в таблице, пересылка в чат. Каждую неделю одно и то же, по три-четыре часа. К моменту готовности цифры уже неактуальны.</p>
+      </div>
+      <div class="cell">
+        <span class="n">03</span>
+        <h3>Клиента ведут вручную до самого конца</h3>
+        <p>Напоминания, догрев, повторное касание, запрос отзыва. Всё держится на памяти конкретного человека — и рассыпается, как только он занят.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="w">
+    <div class="shead rv">
+      <div class="mono">02 — Как это устроено</div>
+      <h2>Семь дней, разложенные по дням</h2>
+      <p>Главный страх при работе с подрядчиком — заплатить и пропасть в неизвестности на месяц. Поэтому срок короткий, а шаги видны заранее.</p>
+    </div>
+    <div class="proc" id="proc">
+      <div class="procfill" id="procfill"></div>
+      <div class="prow"><div class="day">День 1–2</div><div class="txt"><h3>Разбор</h3><p>Смотрю, как процесс работает сейчас. Считаю, сколько часов в неделю он съедает и во что это обходится в деньгах. Выбираем один процесс — тот, где разница будет самой заметной.</p></div></div>
+      <div class="prow"><div class="day">День 3–4</div><div class="txt"><h3>Сборка</h3><p>Собираю систему: интеграции, логика, обработка исключений. Внутри может быть бот, форма, агент, связка с CRM — вам это знать не обязательно, вы покупаете результат, а не стек.</p></div></div>
+      <div class="prow"><div class="day">День 5–6</div><div class="txt"><h3>Обкатка на реальных данных</h3><p>Запускаем параллельно с ручным процессом и сверяем. Ловим то, что всплывает только на живых кейсах: пустые поля, дубли, нестандартные ответы клиентов.</p></div></div>
+      <div class="prow"><div class="day">День 7</div><div class="txt"><h3>Передача и замер</h3><p>Отдаю работающую систему, короткую инструкцию и цифру: было столько-то часов в неделю, стало столько-то. Дальше — либо следующий процесс, либо расходимся.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS -->
+<section id="works">
+  <div class="w">
+    <div class="shead rv">
+      <div class="mono">03 — Работы</div>
+      <h2>Что уже собрано и работает</h2>
+      <p>Это собственные проекты, а не клиентские кейсы — говорю прямо. И статус у каждого указан честно: что работает, что концепт, что ещё делается.</p>
+    </div>
+    <div class="works rv">
+
+      <div class="work">
+        <div class="workshot"><canvas class="mini" data-kind="grid"></canvas></div>
+        <div class="workbody">
+          <h3>Diority</h3>
+          <p>Магазин цифровых товаров: 159 позиций, каталог по категориям, приём оплаты, обработка и выдача заказа за 15–30 минут. Спроектирован, собран и запущен в одиночку, работает с живыми покупателями каждый день.</p>
+          <div class="chips"><span class="chip live">В проде</span><span class="chip">Каталог</span><span class="chip">Оплата</span><span class="chip">Автовыдача</span></div>
+        </div>
+      </div>
+
+      <div class="work">
+        <div class="workshot"><canvas class="mini" data-kind="flow"></canvas></div>
+        <div class="workbody">
+          <h3>Бот с подсчётом по шкалам</h3>
+          <p>Тест, результат которого считается по четырём шкалам, каждое прохождение пишется в таблицу. Вопросы вынесены отдельным списком, чтобы владелец правил их сам, без разработчика. Сейчас в разработке — выложу, когда отработает на реальном потоке.</p>
+          <div class="chips"><span class="chip">В разработке</span><span class="chip">Telegram</span><span class="chip">Аналитика</span><span class="chip">VPS</span></div>
+        </div>
+      </div>
+
+      <div class="work">
+        <div class="workshot"><canvas class="mini" data-kind="bars"></canvas></div>
+        <div class="workbody">
+          <h3>ЖК «Верхний сад»</h3>
+          <p>Лендинг застройщика: планировки, ход строительства, условия ипотеки, форма заявки. Один файл на 46 КБ и ноль внешних запросов — открывается мгновенно даже на слабом мобильном интернете.</p>
+          <div class="chips"><span class="chip">Концепт</span><span class="chip">46 КБ</span><span class="chip">Mobile-first</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRICES -->
+<section id="prices">
+  <div class="w">
+    <div class="shead rv">
+      <div class="mono">04 — Цены</div>
+      <h2>Открытым текстом, до разговора</h2>
+      <p>Чтобы вы поняли, подхожу ли я вам, не потратив на это созвон. Каждая ступень имеет смысл сама по себе — начинать с последней не нужно.</p>
+    </div>
+    <div class="prices rv">
+      <div class="price">
+        <span class="step">Ступень 01</span>
+        <h3>Операционный разбор</h3>
+        <div class="amt">30 000 ₽</div>
+        <p>Три дня. Карта процессов, оценка в часах и деньгах, план на первый месяц. Платный, потому что бесплатное не внедряют.</p>
+      </div>
+      <div class="price key">
+        <span class="step">Ступень 02 — основное</span>
+        <h3>Первая система</h3>
+        <div class="amt">150 000 ₽</div>
+        <p>Семь дней. Один процесс, доведённый до конца и до замера. На выходе — работающая система и цифра «было / стало».</p>
+      </div>
+      <div class="price">
+        <span class="step">Ступень 03</span>
+        <h3>Сопровождение</h3>
+        <div class="amt">от 80 000 ₽<span> / мес</span></div>
+        <p>Поддержка работающего плюс один новый процесс в месяц. Для тех, у кого автоматизация стала частью операционки.</p>
+      </div>
+      <div class="price">
+        <span class="step">Ступень 04</span>
+        <h3>Продукт под ключ</h3>
+        <div class="amt">от 600 000 ₽</div>
+        <p>Внутренний продукт или MVP целиком. Берусь только с теми, с кем уже работали, — иначе риск слишком высок для обеих сторон.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="w two">
+    <div class="rv">
+      <div class="mono">05 — Кто делает</div>
+      <h2>Один человек и очень быстрый процесс</h2>
+      <p style="color:var(--ink-mid)">Fabrestra — студия из одного специалиста. Это не недостаток, который нужно скрывать: у вас нет менеджера-прокладки, нет очереди внутри агентства и нет наценки на офис. Вы говорите напрямую с тем, кто собирает систему.</p>
+    </div>
+    <div class="rv">
+      <ul class="pl">
+        <li><b>Почему семь дней, а не шесть недель.</b> Весь производственный процесс построен вокруг ИИ-инструментов. Это способ работы, а не то, что я продаю: вы платите за убранную работу и срок, а не за модную технологию.</li>
+        <li><b>Один процесс за раз.</b> Никаких «комплексных трансформаций». Автоматизируем то, что болит сильнее всего, замеряем, и только потом решаем про следующее.</li>
+        <li><b>Цифра в конце обязательна.</b> Если после сдачи нельзя назвать, сколько часов в неделю освободилось, работа не считается сделанной.</li>
+        <li><b>Отказываюсь, когда не подхожу.</b> Если процесс дешевле оставить ручным, я скажу это на разборе, а не после оплаты.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" style="border-bottom:none">
+  <div class="w">
+    <div class="final rv">
+      <div class="mono">Следующий шаг</div>
+      <h2>Двадцать минут, чтобы понять, есть ли здесь деньги</h2>
+      <p>Покажете, как процесс работает сейчас. Скажу, что из этого имеет смысл автоматизировать, что не имеет, и в какие сроки и деньги это укладывается. Без презентаций и без обязательств.</p>
+      <div class="contacts">
+        <a class="btn" href="https://t.me/fabrestra">Написать в Telegram <span class="arw">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="w footin">
+    <span class="mono">Fabrestra — автоматизация операционных процессов</span>
+    <span class="mono">fabrestra.com</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+
+  /* ---------- reveal ---------- */
+  var rvs = document.querySelectorAll(".rv");
+  if (reduce || !("IntersectionObserver" in window)) {
+    rvs.forEach(function(e){ e.classList.add("in"); });
+  } else {
+    var ro = new IntersectionObserver(function(en){
+      en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add("in"); ro.unobserve(x.target); } });
+    }, {threshold:.12});
+    rvs.forEach(function(e){ ro.observe(e); });
+  }
+
+  /* ---------- count up ---------- */
+  var cnts = document.querySelectorAll(".cnt");
+  function runCount(el){
+    var to = parseInt(el.dataset.to,10), t0 = null, dur = 900;
+    if (reduce){ el.textContent = to; return; }
+    function step(t){
+      if(!t0) t0 = t;
+      var p = Math.min((t-t0)/dur,1);
+      el.textContent = Math.round(to * (1 - Math.pow(1-p,3)));
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if(!("IntersectionObserver" in window)){ cnts.forEach(runCount); }
+  else {
+    var co = new IntersectionObserver(function(en){
+      en.forEach(function(x){ if(x.isIntersecting){ runCount(x.target); co.unobserve(x.target); } });
+    },{threshold:.5});
+    cnts.forEach(function(e){ co.observe(e); });
+  }
+
+  /* ---------- process progress ---------- */
+  var proc = document.getElementById("proc"),
+      fill = document.getElementById("procfill"),
+      rows = proc ? proc.querySelectorAll(".prow") : [];
+  function onScroll(){
+    if(!proc) return;
+    var r = proc.getBoundingClientRect(), vh = window.innerHeight;
+    var p = (vh*0.72 - r.top) / r.height;
+    p = Math.max(0, Math.min(1, p));
+    fill.style.height = (p*100) + "%";
+    rows.forEach(function(row,i){
+      row.classList.toggle("on", p >= (i+0.35)/rows.length);
+    });
+  }
+  if(reduce){ if(fill){ fill.style.height="100%"; } rows.forEach(function(r){r.classList.add("on");}); }
+  else { window.addEventListener("scroll", onScroll, {passive:true}); window.addEventListener("resize", onScroll); onScroll(); }
+
+  /* ---------- hero conveyor ---------- */
+  var cv = document.getElementById("belt");
+  if(cv){
+    var ctx = cv.getContext("2d"), W=0, H=0, dpr=1;
+    var capA = document.getElementById("capA"), capB = document.getElementById("capB");
+    var manual = [], auto = [], queued = 0, done = 0, tAcc = 0, last = 0;
+
+    function size(){
+      dpr = Math.min(window.devicePixelRatio||1, 2);
+      W = cv.clientWidth; H = cv.clientHeight;
+      cv.width = W*dpr; cv.height = H*dpr;
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+
+    function spawn(){
+      manual.push({x:-14, s:0.9+Math.random()*0.3, stuck:false, passed:false, age:0});
+      auto.push({x:-14, s:1.7+Math.random()*0.35});
+    }
+
+    function draw(){
+      var ink=css("--ink"), mid=css("--ink-dim"), line=css("--line"),
+          acc=css("--accent"), sig=css("--signal"), steel=css("--steel"), surf=css("--surface-2");
+      ctx.clearRect(0,0,W,H);
+
+      var yA = H*0.31, yB = H*0.73, gate = W*0.66, pad = 14, sz = 13;
+
+      ctx.font = '500 11px "IBM Plex Mono", monospace';
+      ctx.textBaseline = "alphabetic";
+
+      /* lane beds */
+      ctx.fillStyle = surf; ctx.globalAlpha = .7;
+      ctx.fillRect(pad, yA-9, W-pad*2, sz+18);
+      ctx.fillRect(pad, yB-9, W-pad*2, sz+18);
+      ctx.globalAlpha = 1;
+
+      /* lane A */
+      ctx.fillStyle = mid;
+      ctx.fillText("ВРУЧНУЮ", pad, yA-20);
+      ctx.strokeStyle = line; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(pad, yA+sz+8.5); ctx.lineTo(W-pad, yA+sz+8.5); ctx.stroke();
+
+      /* bottleneck marker */
+      ctx.save();
+      ctx.setLineDash([3,3]); ctx.strokeStyle = sig; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.moveTo(gate, yA-9); ctx.lineTo(gate, yA+sz+9); ctx.stroke();
+      ctx.restore();
+      ctx.fillStyle = sig;
+      ctx.fillText("узкое место", gate+7, yA-20);
+
+      /* lane B */
+      ctx.fillStyle = mid;
+      ctx.fillText("С FABRESTRA", pad, yB-20);
+      ctx.strokeStyle = line;
+      ctx.beginPath(); ctx.moveTo(pad, yB+sz+8.5); ctx.lineTo(W-pad, yB+sz+8.5); ctx.stroke();
+
+      /* items A */
+      manual.forEach(function(m){
+        if(m.x < -sz || m.x > W) return;
+        ctx.fillStyle = m.stuck ? sig : steel;
+        ctx.globalAlpha = m.stuck ? Math.min(1, .5 + m.age/120) : .8;
+        ctx.fillRect(m.x, yA, sz, sz);
+        ctx.globalAlpha = 1;
+      });
+      /* items B */
+      auto.forEach(function(a){
+        if(a.x < -sz || a.x > W) return;
+        ctx.fillStyle = acc; ctx.globalAlpha = .88;
+        ctx.fillRect(a.x, yB, sz, sz);
+        ctx.globalAlpha = 1;
+      });
+
+      /* exit marks */
+      ctx.fillStyle = line;
+      ctx.fillRect(W-pad-2, yA-9, 2, sz+18);
+      ctx.fillRect(W-pad-2, yB-9, 2, sz+18);
+    }
+
+    function step(t){
+      if(!last) last = t;
+      var dt = Math.min((t-last), 50); last = t;
+      tAcc += dt;
+      if(tAcc > 400){ tAcc = 0; spawn(); }
+
+      var gate = W*0.66, sz = 13, gap = 4;
+      /* manual: queue behind the gate, released one at a time */
+      manual.sort(function(a,b){ return b.x - a.x; });
+      var ahead = null;
+      manual.forEach(function(m){
+        var target = m.x + m.s * dt/16;
+        var limit = m.passed ? Infinity : gate - sz - 1;
+        if(ahead !== null) limit = Math.min(limit, ahead - sz - gap);
+        if(target > limit){ target = limit; m.stuck = !m.passed; m.age += dt/16; }
+        else { m.stuck = false; }
+        m.x = target;
+        ahead = m.x;
+      });
+      /* the gate lets one through roughly every 1.6 s */
+      if(Math.random() < dt/1600){
+        for(var q=0;q<manual.length;q++){
+          if(manual[q].stuck && !manual[q].passed){
+            manual[q].passed = true; manual[q].stuck = false; manual[q].s = 1.9; break;
+          }
+        }
+      }
+      manual = manual.filter(function(m){ return m.x < W + sz; });
+      queued = manual.filter(function(m){ return m.stuck; }).length;
+
+      auto.forEach(function(a){ a.x += a.s * dt/16; });
+      var before = auto.length;
+      auto = auto.filter(function(a){ return a.x < W; });
+      done += before - auto.length;
+
+      if(capA) capA.textContent = "Вручную · в очереди " + queued;
+      if(capB) capB.textContent = "С Fabrestra · обработано " + done;
+
+      draw();
+      requestAnimationFrame(step);
+    }
+
+    function seed(){
+      var gate = W*0.66, sz = 13, i;
+      manual = []; auto = [];
+      for(i=0;i<6;i++) manual.push({x:gate-sz-1-i*17, s:0.95, stuck:true, passed:false, age:130});
+      for(i=0;i<4;i++) manual.push({x:gate-sz-1-6*17-44-i*46, s:0.95, stuck:false, passed:false, age:0});
+      for(i=0;i<5;i++) auto.push({x:22+i*78, s:1.8});
+      queued = 6; done = 12;
+      if(capA) capA.textContent = "Вручную · в очереди " + queued;
+      if(capB) capB.textContent = "С Fabrestra · обработано " + done;
+    }
+
+    size();
+    seed();
+    draw();
+    window.addEventListener("resize", function(){ size(); draw(); });
+
+    if(!reduce) requestAnimationFrame(step);
+  }
+
+  /* ---------- mini graphics on work cards ---------- */
+  document.querySelectorAll("canvas.mini").forEach(function(c){
+    var x = c.getContext("2d");
+    function paint(){
+      var d = Math.min(window.devicePixelRatio||1,2);
+      var w = c.clientWidth, h = c.clientHeight;
+      c.width = w*d; c.height = h*d; x.setTransform(d,0,0,d,0,0);
+      var acc = css("--accent"), line = css("--line"), dim = css("--ink-dim");
+      x.clearRect(0,0,w,h);
+      var kind = c.dataset.kind;
+      if(kind === "grid"){
+        var cols = 9, rows = 5, gw = (w-40)/cols, gh = (h-40)/rows;
+        for(var i=0;i<cols;i++) for(var j=0;j<rows;j++){
+          var lit = ((i*7+j*3) % 5 === 0);
+          x.fillStyle = lit ? acc : line;
+          x.globalAlpha = lit ? .9 : .55;
+          x.fillRect(20+i*gw, 20+j*gh, gw-5, gh-5);
+        }
+        x.globalAlpha = 1;
+      } else if(kind === "bars"){
+        var vals = [.35,.55,.42,.78,.62,.9,.7];
+        vals.forEach(function(v,i){
+          var bw = (w-44)/vals.length;
+          x.fillStyle = i===5 ? acc : line;
+          x.globalAlpha = i===5 ? .9 : .6;
+          x.fillRect(22+i*bw, h-18-(h-46)*v, bw-7, (h-46)*v);
+        });
+        x.globalAlpha = 1;
+      } else {
+        var pts = [[22,h*.5],[w*.32,h*.5],[w*.32,h*.24],[w*.62,h*.24],[w*.62,h*.76],[w-22,h*.76]];
+        x.strokeStyle = line; x.lineWidth = 2;
+        x.beginPath(); x.moveTo(pts[0][0],pts[0][1]);
+        for(var k=1;k<pts.length;k++) x.lineTo(pts[k][0],pts[k][1]);
+        x.stroke();
+        pts.forEach(function(p,i){
+          x.fillStyle = (i===0||i===pts.length-1) ? acc : line;
+          x.beginPath(); x.arc(p[0],p[1],4.5,0,Math.PI*2); x.fill();
+        });
+      }
+    }
+    paint();
+    window.addEventListener("resize", paint);
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+# рабочие файлы — не для публикации
+spisok-kompaniy.xlsx
+*.xlsx
+.~lock.*#
+
+# бот живёт в отдельном приватном репозитории
+bot/
+
+# служебное
+brand/_preview40.png
+__pycache__/
+.env
+results.db
+venv/
