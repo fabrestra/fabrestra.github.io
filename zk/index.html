@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ЖК «Верхний сад» — квартиры бизнес-класса на Волге</title>
+<meta name="description" content="Клубный дом на 96 квартир на Верхневолжской набережной. Панорамные окна, приватный сад, подземный паркинг. Сдача IV квартал 2027. Ипотека от 4,9%.">
+<meta property="og:title" content="ЖК «Верхний сад» — квартиры бизнес-класса на Волге">
+<meta property="og:description" content="96 квартир, приватный сад, паркинг под домом. Сдача IV квартал 2027.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d2b26'/%3E%3Cpath d='M9 23V13l7-5 7 5v10h-5v-6h-4v6z' fill='%23c98a5e'/%3E%3C/svg%3E">
+<style>
+:root{--sand:#f6f1ea;--sand2:#ede5da;--ink:#1d2b26;--soft:#43544d;--muted:#8a9691;--acc:#c98a5e;--acc2:#b5744a;--line:rgba(29,43,38,.12);--white:#fffdfa;--r:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",system-ui,-apple-system,sans-serif;background:var(--sand);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+svg{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+section{padding:clamp(70px,9vw,128px) 0}
+.disp{font-family:Georgia,"Times New Roman",serif;font-weight:400;line-height:1.06;letter-spacing:-.01em}
+h1.disp{font-size:clamp(38px,6.4vw,76px)}
+h2.disp{font-size:clamp(30px,4.4vw,52px)}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--acc);font-weight:700;margin-bottom:18px}
+.lead{font-size:clamp(16px,1.6vw,19px);color:var(--soft);max-width:56ch}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 30px;border-radius:100px;border:1px solid transparent;font-size:15px;font-weight:700;cursor:pointer;transition:.25s;font-family:inherit;white-space:nowrap}
+.btn-p{background:var(--acc);color:#fff}
+.btn-p:hover{background:var(--acc2);transform:translateY(-2px);box-shadow:0 10px 24px rgba(181,116,74,.28)}
+.btn-g{border-color:var(--line);color:var(--ink)}
+.btn-g:hover{border-color:var(--ink)}
+.btn-l{background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.32);backdrop-filter:blur(6px)}
+.btn-l:hover{background:rgba(255,255,255,.24)}
+
+header{position:fixed;top:0;left:0;right:0;z-index:80;padding:20px 0;transition:.35s}
+header.solid{background:rgba(246,241,234,.93);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);padding:12px 0}
+.nav{display:flex;align-items:center;gap:36px}
+.logo{display:flex;align-items:center;gap:11px;font-weight:800;font-size:15px;letter-spacing:.04em}
+.logo svg{width:32px;height:32px;flex:none}
+.logo small{display:block;font-size:10px;letter-spacing:.16em;font-weight:600;color:var(--muted);text-transform:uppercase}
+.nlinks{display:flex;gap:26px;margin-left:auto;font-size:14px;font-weight:600}
+.nlinks a{color:var(--soft);padding:6px 0;position:relative}
+.nlinks a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--acc);transition:.25s}
+.nlinks a:hover::after{width:100%}
+.ncta{display:flex;align-items:center;gap:18px}
+.nphone{font-weight:700;font-size:15px;white-space:nowrap}
+header:not(.solid) .nlinks a,header:not(.solid) .nphone,header:not(.solid) .logo{color:#fff}
+header:not(.solid) .logo small{color:rgba(255,255,255,.6)}
+header:not(.solid) .burger span{background:#fff}
+.burger{display:none;width:42px;height:42px;border:none;background:none;cursor:pointer;flex-direction:column;justify-content:center;gap:5px;padding:0 8px}
+.burger span{display:block;height:2px;background:var(--ink);border-radius:2px;transition:.3s}
+.burger.x span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.x span:nth-child(2){opacity:0}
+.burger.x span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding-bottom:64px;overflow:hidden;color:#fff}
+.hbg{position:absolute;inset:0;z-index:0}
+.hbg svg{width:100%;height:100%;object-fit:cover}
+.hbg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,22,19,.55),rgba(12,22,19,.14) 38%,rgba(12,22,19,.84))}
+.hero .wrap{position:relative;z-index:2;width:100%}
+.hero .eyebrow{color:#e8b98f}
+.hero h1{color:#fff;margin-bottom:22px;max-width:15ch}
+.hero p{color:rgba(255,255,255,.86);max-width:46ch;font-size:17px}
+.hact{display:flex;gap:14px;flex-wrap:wrap;margin:34px 0 52px}
+.hstats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;border-top:1px solid rgba(255,255,255,.22);padding-top:28px}
+.stat b{display:block;font-family:Georgia,serif;font-size:clamp(30px,3.6vw,44px);font-weight:400;line-height:1;margin-bottom:7px;color:#fff}
+.stat span{font-size:13px;color:rgba(255,255,255,.62)}
+
+.sec-head{max-width:780px;margin-bottom:56px}
+.sec-head h2{margin-bottom:20px}
+.feats{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.feat{background:var(--sand);padding:38px 30px;transition:.3s}
+.feat:hover{background:var(--white)}
+.fico{width:44px;height:44px;margin-bottom:22px;color:var(--acc)}
+.feat h3{font-size:17px;font-weight:800;margin-bottom:10px}
+.feat p{font-size:14.5px;color:var(--soft)}
+
+#plans{background:var(--white)}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.plan{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--sand);display:flex;flex-direction:column;transition:.3s}
+.plan:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(29,43,38,.1);border-color:rgba(201,138,94,.45)}
+.pimg{background:var(--white);padding:24px;border-bottom:1px solid var(--line)}
+.pbody{padding:26px;display:flex;flex-direction:column;flex:1}
+.ptag{display:inline-block;font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--acc);margin-bottom:12px}
+.plan h3{font-family:Georgia,serif;font-weight:400;font-size:28px;margin-bottom:6px}
+.pmeta{font-size:14px;color:var(--muted);margin-bottom:20px}
+.prows{border-top:1px solid var(--line);margin-top:auto;padding-top:18px}
+.prow{display:flex;justify-content:space-between;font-size:14px;padding:5px 0;color:var(--soft)}
+.prow b{color:var(--ink)}
+.pprice{font-size:23px;font-weight:800;margin:16px 0 18px}
+.pprice small{display:block;font-size:13px;font-weight:600;color:var(--muted)}
+.plan .btn{width:100%}
+
+.loc{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.map{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--white)}
+.llist{list-style:none}
+.llist li{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--line);font-size:15px}
+.llist li:last-child{border:none}
+.llist span{color:var(--soft)}
+.llist b{white-space:nowrap;color:var(--acc)}
+
+#progress{background:var(--ink);color:var(--white)}
+#progress .eyebrow{color:#e8b98f}
+#progress h2,#progress .lead{color:var(--white)}
+#progress .lead{color:rgba(255,253,250,.7)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+.step{padding-top:26px;border-top:2px solid rgba(255,253,250,.16)}
+.step.done{border-top-color:var(--acc)}
+.sq{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,253,250,.5);margin-bottom:10px;font-weight:700}
+.step h4{font-size:17px;font-weight:800;margin-bottom:8px}
+.step p{font-size:14px;color:rgba(255,253,250,.62)}
+.sb{display:inline-block;margin-top:14px;font-size:12px;font-weight:700;padding:5px 12px;border-radius:100px;background:rgba(201,138,94,.16);color:#e8b98f}
+.step.done .sb{background:var(--acc);color:#fff}
+
+.terms{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.term{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:36px 30px}
+.term b.num{display:block;font-family:Georgia,serif;font-size:52px;font-weight:400;line-height:1;color:var(--acc);margin-bottom:16px}
+.term h3{font-size:18px;font-weight:800;margin-bottom:10px}
+.term p{font-size:14.5px;color:var(--soft)}
+
+#cta{background:var(--sand2)}
+.fcard{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:clamp(32px,4.5vw,64px);display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.fcard h2{margin-bottom:18px}
+.note{font-size:13px;color:var(--muted);margin-top:16px;line-height:1.55}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:13px;font-weight:700;margin-bottom:7px;color:var(--soft)}
+.field input,.field select{width:100%;padding:15px 18px;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:15px;background:var(--sand);color:var(--ink);transition:.2s}
+.field input:focus,.field select:focus{outline:none;border-color:var(--acc);background:var(--white);box-shadow:0 0 0 4px rgba(201,138,94,.12)}
+.field input.err{border-color:#d2593f;background:#fdf3f1}
+.field .msg{font-size:12px;color:#d2593f;margin-top:6px;display:none}
+.field input.err~.msg{display:block}
+form .btn{width:100%;margin-top:8px}
+.ok{display:none;text-align:center;padding:40px 20px}
+.ok.on{display:block}
+.ok svg{width:62px;height:62px;margin:0 auto 20px;color:var(--acc)}
+.ok h3{font-family:Georgia,serif;font-weight:400;font-size:32px;margin-bottom:10px}
+.ok p{color:var(--soft)}
+
+footer{background:var(--ink);color:rgba(255,253,250,.62);padding:64px 0 34px;font-size:14px}
+.ftop{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,253,250,.12)}
+.ftop .logo{color:var(--white);margin-bottom:16px}
+.fcol h5{color:var(--white);font-size:14px;font-weight:800;margin-bottom:14px}
+.fcol a{display:block;padding:5px 0;transition:.2s}
+.fcol a:hover{color:var(--acc)}
+.fbot{padding-top:26px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12.5px;color:rgba(255,253,250,.42);line-height:1.6}
+.demo{border:1px solid rgba(255,253,250,.18);border-radius:8px;padding:10px 14px;max-width:640px}
+
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+
+@media(max-width:1024px){.feats{grid-template-columns:1fr 1fr}.plans{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr;gap:34px}.loc,.fcard{grid-template-columns:1fr;gap:38px}.terms{grid-template-columns:1fr}.ftop{grid-template-columns:1fr 1fr}}
+@media(max-width:820px){
+ .burger{display:flex}
+ .nlinks{position:fixed;inset:0 0 0 auto;width:min(320px,86vw);background:var(--sand);flex-direction:column;gap:0;padding:96px 28px 28px;transform:translateX(105%);transition:.35s;box-shadow:-14px 0 44px rgba(0,0,0,.14);margin:0}
+ .nlinks.open{transform:none}
+ .nlinks a{color:var(--ink)!important;font-size:17px;padding:15px 0;border-bottom:1px solid var(--line);width:100%}
+ header:not(.solid) .nlinks a{color:var(--ink)!important}
+ .nav{gap:14px}.ncta{margin-left:auto}.nphone{display:none}
+ .hstats{grid-template-columns:1fr 1fr;gap:24px}
+ .plans{grid-template-columns:1fr}.ftop{grid-template-columns:1fr;gap:28px}
+ .hact .btn{flex:1}
+}
+@media(max-width:520px){.wrap{padding:0 18px}.feats,.steps{grid-template-columns:1fr}.hero{padding-bottom:44px}}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+ <div class="wrap nav">
+  <a href="#top" class="logo">
+   <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="7" fill="currentColor" opacity=".1"/><path d="M9 23V13l7-5 7 5v10h-5v-6h-4v6z" fill="#c98a5e"/></svg>
+   <span>ВЕРХНИЙ САД<small>клубный дом</small></span>
+  </a>
+  <nav class="nlinks" id="menu">
+   <a href="#about">О комплексе</a><a href="#plans">Планировки</a><a href="#location">Локация</a><a href="#progress">Строительство</a><a href="#terms">Покупка</a>
+  </nav>
+  <div class="ncta">
+   <a href="tel:+78312000000" class="nphone">+7 831 200-00-00</a>
+   <a href="#cta" class="btn btn-p" style="padding:12px 22px;font-size:14px">Подобрать квартиру</a>
+   <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+  </div>
+ </div>
+</header>
+
+<section class="hero" id="top">
+ <div class="hbg" aria-hidden="true">
+  <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+   <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2a3f47"/><stop offset="45%" stop-color="#6b6a63"/><stop offset="78%" stop-color="#c99a6e"/><stop offset="100%" stop-color="#e0b183"/></linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#43585c"/><stop offset="55%" stop-color="#2c3c40"/><stop offset="100%" stop-color="#1b2629"/></linearGradient>
+    <linearGradient id="tw" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#f0e6d8"/><stop offset="70%" stop-color="#d9cbb8"/><stop offset="100%" stop-color="#bdae9b"/></linearGradient>
+    <linearGradient id="wa" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8f9a8d"/><stop offset="100%" stop-color="#4d5a54"/></linearGradient>
+   </defs>
+   <rect width="1440" height="900" fill="url(#sky)"/>
+   <circle cx="1105" cy="330" r="72" fill="#f6dcb4" opacity=".55"/>
+   <circle cx="1105" cy="330" r="150" fill="#f6dcb4" opacity=".14"/>
+   <g opacity=".26" fill="#1d2b26"><rect x="60" y="474" width="86" height="230"/><rect x="168" y="516" width="62" height="188"/><rect x="256" y="446" width="74" height="258"/><rect x="1108" y="492" width="80" height="212"/><rect x="1208" y="452" width="66" height="252"/><rect x="1296" y="510" width="88" height="194"/></g>
+   <rect x="0" y="700" width="1440" height="200" fill="url(#wa)"/>
+   <g stroke="#e8d6bb" stroke-width="2" opacity=".22"><line x1="120" y1="742" x2="330" y2="742"/><line x1="420" y1="770" x2="700" y2="770"/><line x1="820" y1="752" x2="1010" y2="752"/><line x1="1060" y1="800" x2="1330" y2="800"/><line x1="240" y1="826" x2="520" y2="826"/><line x1="640" y1="864" x2="980" y2="864"/></g>
+   <rect x="352" y="252" width="256" height="452" fill="url(#tw)"/><rect x="352" y="252" width="256" height="16" fill="#a8977f"/>
+   <rect x="636" y="186" width="212" height="518" fill="url(#glass)"/><rect x="636" y="186" width="212" height="14" fill="#0f1719" opacity=".5"/>
+   <rect x="876" y="322" width="182" height="382" fill="url(#tw)"/><rect x="876" y="322" width="182" height="14" fill="#a8977f"/>
+   <g id="win"></g>
+   <rect x="0" y="690" width="1440" height="18" fill="#3c4a43"/>
+   <g fill="#31423a">
+    <ellipse cx="180" cy="656" rx="46" ry="54"/><rect x="175" y="656" width="10" height="42"/>
+    <ellipse cx="272" cy="672" rx="34" ry="40"/><rect x="268" y="672" width="8" height="28"/>
+    <ellipse cx="1160" cy="662" rx="42" ry="50"/><rect x="1156" y="662" width="9" height="36"/>
+    <ellipse cx="1258" cy="676" rx="30" ry="36"/><rect x="1254" y="676" width="8" height="24"/>
+    <ellipse cx="96" cy="678" rx="30" ry="36"/><rect x="92" y="678" width="8" height="24"/>
+   </g>
+  </svg>
+ </div>
+ <div class="wrap">
+  <div class="eyebrow rv">Нижний Новгород · Верхневолжская набережная</div>
+  <h1 class="disp rv">Дом, из которого видно реку</h1>
+  <p class="rv">96 квартир бизнес-класса в трёх корпусах переменной этажности. Приватный сад во дворе, панорамное остекление от пола, подземный паркинг с лифтом до этажа.</p>
+  <div class="hact rv"><a href="#plans" class="btn btn-p">Смотреть планировки</a><a href="#cta" class="btn btn-l">Подборка с ценами</a></div>
+  <div class="hstats rv">
+   <div class="stat"><b data-count="96">0</b><span>квартир в доме</span></div>
+   <div class="stat"><b data-count="14">0</b><span>этажей максимум</span></div>
+   <div class="stat"><b data-count="4.9" data-dec="1">0</b><span>% ставка по ипотеке</span></div>
+   <div class="stat"><b>IV&nbsp;кв. 2027</b><span>срок сдачи</span></div>
+  </div>
+ </div>
+</section>
+
+<section id="about">
+ <div class="wrap">
+  <div class="sec-head rv">
+   <div class="eyebrow">О комплексе</div>
+   <h2 class="disp">Камерный формат вместо человейника</h2>
+   <p class="lead">Три корпуса, 96 квартир, один двор без машин. На этаже не больше четырёх квартир, у каждой второй окна выходят на Волгу.</p>
+  </div>
+  <div class="feats rv">
+   <div class="feat"><svg class="fico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 42V20l18-12 18 12v22"/><path d="M18 42V28h12v14"/><path d="M6 42h36"/></svg><h3>Потолки 3,1 м</h3><p>Панорамное остекление от пола до потолка. В квартирах с видом на реку французские балконы.</p></div>
+   <div class="feat"><svg class="fico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M24 42s14-9.6 14-21a14 14 0 1 0-28 0c0 11.4 14 21 14 21z"/><circle cx="24" cy="20" r="5.2"/></svg><h3>Двор без машин</h3><p>Приватный сад 2 400 м² по проекту ландшафтного бюро. Въезд в паркинг с внешней стороны участка.</p></div>
+   <div class="feat"><svg class="fico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="15" width="34" height="22" rx="3"/><path d="M14 15v-3a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v3"/><path d="M7 26h34"/></svg><h3>Паркинг под домом</h3><p>112 машиномест и кладовые на минус первом этаже. Лифт спускается прямо в паркинг.</p></div>
+   <div class="feat"><svg class="fico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="17"/><path d="M24 13v11l7 5"/></svg><h3>Сдача в 2027</h3><p>Работаем по 214-ФЗ, деньги на эскроу-счетах в банке. Разрешение на строительство получено.</p></div>
+  </div>
+ </div>
+</section>
+
+<section id="plans">
+ <div class="wrap">
+  <div class="sec-head rv">
+   <div class="eyebrow">Планировки</div>
+   <h2 class="disp">Выберите свой формат</h2>
+   <p class="lead">В продаже 96 квартир от студий до трёхкомнатных. Ниже три ходовых варианта, полный каталог пришлём в подборке.</p>
+  </div>
+  <div class="plans">
+
+   <article class="plan rv">
+    <div class="pimg"><svg viewBox="0 0 320 240" fill="none">
+     <rect x="20" y="20" width="280" height="200" fill="#faf7f2" stroke="#1d2b26" stroke-width="2.5"/>
+     <path d="M180 20v130M180 150H300M20 150h60M80 150v70" stroke="#1d2b26" stroke-width="2.5"/>
+     <path d="M60 20h90M215 20h60" stroke="#c98a5e" stroke-width="6"/><path d="M20 70v55" stroke="#c98a5e" stroke-width="6"/>
+     <path d="M180 60a24 24 0 0 1-24 24" stroke="#8a9691" stroke-width="1.6" stroke-dasharray="4 4"/>
+     <text x="100" y="88" font-size="13" font-weight="700" fill="#1d2b26" text-anchor="middle">ЖИЛАЯ</text>
+     <text x="100" y="105" font-size="12" fill="#8a9691" text-anchor="middle">19,4 м²</text>
+     <text x="240" y="92" font-size="12" font-weight="700" fill="#1d2b26" text-anchor="middle">САНУЗЕЛ</text>
+     <text x="240" y="190" font-size="12" font-weight="700" fill="#1d2b26" text-anchor="middle">БАЛКОН</text>
+     <text x="50" y="190" font-size="11" font-weight="700" fill="#1d2b26" text-anchor="middle">ПРИХ.</text>
+    </svg></div>
+    <div class="pbody">
+     <div class="ptag">Свободна</div><h3>Студия</h3>
+     <div class="pmeta">28,4 м² · корпус А · этажи 3–12</div>
+     <div class="prows"><div class="prow"><span>Комнат</span><b>1</b></div><div class="prow"><span>Потолки</span><b>3,1 м</b></div><div class="prow"><span>Вид</span><b>во двор</b></div></div>
+     <div class="pprice"><small>от</small>5 920 000 ₽</div>
+     <a href="#cta" class="btn btn-g">Узнать наличие</a>
+    </div>
+   </article>
+
+   <article class="plan rv">
+    <div class="pimg"><svg viewBox="0 0 320 240" fill="none">
+     <rect x="20" y="20" width="280" height="200" fill="#faf7f2" stroke="#1d2b26" stroke-width="2.5"/>
+     <path d="M160 20v200M160 120H300M20 155h140M240 120v100" stroke="#1d2b26" stroke-width="2.5"/>
+     <path d="M55 20h80M195 20h70" stroke="#c98a5e" stroke-width="6"/><path d="M300 60v50" stroke="#c98a5e" stroke-width="6"/>
+     <path d="M160 70a26 26 0 0 1-26 26" stroke="#8a9691" stroke-width="1.6" stroke-dasharray="4 4"/>
+     <text x="90" y="88" font-size="13" font-weight="700" fill="#1d2b26" text-anchor="middle">ГОСТИНАЯ</text>
+     <text x="90" y="105" font-size="12" fill="#8a9691" text-anchor="middle">21,6 м²</text>
+     <text x="230" y="72" font-size="12" font-weight="700" fill="#1d2b26" text-anchor="middle">КУХНЯ</text>
+     <text x="230" y="88" font-size="11" fill="#8a9691" text-anchor="middle">11,2 м²</text>
+     <text x="90" y="192" font-size="12" font-weight="700" fill="#1d2b26" text-anchor="middle">ПРИХОЖАЯ</text>
+     <text x="200" y="176" font-size="11" font-weight="700" fill="#1d2b26" text-anchor="middle">С/У</text>
+     <text x="270" y="176" font-size="11" font-weight="700" fill="#1d2b26" text-anchor="middle">ЛОДЖ.</text>
+    </svg></div>
+    <div class="pbody">
+     <div class="ptag">Хит продаж</div><h3>Однокомнатная</h3>
+     <div class="pmeta">42,8 м² · корпус Б · этажи 4–14</div>
+     <div class="prows"><div class="prow"><span>Комнат</span><b>1 + кухня</b></div><div class="prow"><span>Потолки</span><b>3,1 м</b></div><div class="prow"><span>Вид</span><b>на Волгу</b></div></div>
+     <div class="pprice"><small>от</small>8 470 000 ₽</div>
+     <a href="#cta" class="btn btn-p">Забронировать</a>
+    </div>
+   </article>
+
+   <article class="plan rv">
+    <div class="pimg"><svg viewBox="0 0 320 240" fill="none">
+     <rect x="20" y="20" width="280" height="200" fill="#faf7f2" stroke="#1d2b26" stroke-width="2.5"/>
+     <path d="M145 20v90M145 110H300M20 145h145M215 110v110M145 110v110" stroke="#1d2b26" stroke-width="2.5"/>
+     <path d="M50 20h70M180 20h85" stroke="#c98a5e" stroke-width="6"/><path d="M20 60v60M300 145v50" stroke="#c98a5e" stroke-width="6"/>
+     <path d="M145 60a24 24 0 0 1-24 24" stroke="#8a9691" stroke-width="1.6" stroke-dasharray="4 4"/>
+     <text x="82" y="70" font-size="12" font-weight="700" fill="#1d2b26" text-anchor="middle">СПАЛЬНЯ</text>
+     <text x="82" y="86" font-size="11" fill="#8a9691" text-anchor="middle">16,8 м²</text>
+     <text x="222" y="62" font-size="12" font-weight="700" fill="#1d2b26" text-anchor="middle">ГОСТИНАЯ</text>
+     <text x="222" y="78" font-size="11" fill="#8a9691" text-anchor="middle">24,3 м²</text>
+     <text x="82" y="188" font-size="12" font-weight="700" fill="#1d2b26" text-anchor="middle">КУХНЯ</text>
+     <text x="180" y="172" font-size="11" font-weight="700" fill="#1d2b26" text-anchor="middle">С/У</text>
+     <text x="258" y="172" font-size="11" font-weight="700" fill="#1d2b26" text-anchor="middle">ТЕРРАСА</text>
+    </svg></div>
+    <div class="pbody">
+     <div class="ptag">4 квартиры</div><h3>Двухкомнатная</h3>
+     <div class="pmeta">61,7 м² · корпус Б · этажи 9–14</div>
+     <div class="prows"><div class="prow"><span>Комнат</span><b>2 + кухня</b></div><div class="prow"><span>Потолки</span><b>3,4 м</b></div><div class="prow"><span>Вид</span><b>панорама реки</b></div></div>
+     <div class="pprice"><small>от</small>12 350 000 ₽</div>
+     <a href="#cta" class="btn btn-g">Узнать наличие</a>
+    </div>
+   </article>
+
+  </div>
+ </div>
+</section>
+
+<section id="location">
+ <div class="wrap loc">
+  <div class="map rv">
+   <svg viewBox="0 0 640 460" fill="none">
+    <rect width="640" height="460" fill="#f2ede5"/>
+    <path d="M0 352c110-26 200 14 320-6s220-56 320-30v144H0z" fill="#b9c6bd"/>
+    <path d="M0 352c110-26 200 14 320-6s220-56 320-30" stroke="#8fa295" stroke-width="2"/>
+    <g fill="#e3dbcf"><rect x="42" y="60" width="128" height="96" rx="4"/><rect x="196" y="42" width="104" height="72" rx="4"/><rect x="330" y="66" width="150" height="88" rx="4"/><rect x="506" y="44" width="96" height="110" rx="4"/><rect x="46" y="196" width="112" height="82" rx="4"/><rect x="470" y="188" width="132" height="96" rx="4"/></g>
+    <g stroke="#d6cbba" stroke-width="13" stroke-linecap="round"><path d="M0 178h640"/><path d="M186 0v352"/><path d="M492 0v320"/></g>
+    <g stroke="#fff" stroke-width="2.5" stroke-dasharray="9 9"><path d="M0 178h640"/><path d="M186 0v352"/></g>
+    <ellipse cx="300" cy="250" rx="86" ry="56" fill="#cddac8"/>
+    <text x="300" y="256" font-size="14" fill="#6c7c6f" text-anchor="middle" font-weight="700">ПАРК</text>
+    <circle cx="404" cy="304" r="34" fill="#c98a5e" opacity=".18"/><circle cx="404" cy="304" r="20" fill="#c98a5e"/>
+    <path d="M398 312v-9l6-4.5 6 4.5v9h-4v-5h-4v5z" fill="#fff"/>
+    <text x="404" y="352" font-size="15" font-weight="800" fill="#1d2b26" text-anchor="middle">ВЕРХНИЙ САД</text>
+    <text x="404" y="372" font-size="12" fill="#8a9691" text-anchor="middle">Верхневолжская наб.</text>
+    <g font-size="11.5" fill="#5c6b63">
+     <circle cx="196" cy="128" r="5" fill="#1d2b26"/><text x="210" y="132">Школа №1</text>
+     <circle cx="104" cy="234" r="5" fill="#1d2b26"/><text x="118" y="238">Гребной канал</text>
+     <circle cx="540" cy="238" r="5" fill="#1d2b26"/><text x="552" y="242">ТЦ «Небо»</text>
+    </g>
+   </svg>
+  </div>
+  <div class="rv">
+   <div class="eyebrow">Локация</div>
+   <h2 class="disp" style="margin-bottom:20px">Пешком до&nbsp;набережной</h2>
+   <p class="lead" style="margin-bottom:28px">Исторический центр в 10 минутах, но без его шума: участок закрыт зеленью с трёх сторон.</p>
+   <ul class="llist">
+    <li><span>Верхневолжская набережная</span><b>3 мин пешком</b></li>
+    <li><span>Парк «Швейцария»</span><b>7 мин пешком</b></li>
+    <li><span>Гимназия №13, школа №1</span><b>от 6 мин</b></li>
+    <li><span>Метро «Горьковская»</span><b>11 мин пешком</b></li>
+    <li><span>Площадь Минина</span><b>9 мин на авто</b></li>
+    <li><span>Аэропорт Стригино</span><b>34 мин на авто</b></li>
+   </ul>
+  </div>
+ </div>
+</section>
+
+<section id="progress">
+ <div class="wrap">
+  <div class="sec-head rv">
+   <div class="eyebrow">Ход строительства</div>
+   <h2 class="disp">Что уже сделано</h2>
+   <p class="lead">Фотоотчёт обновляем каждый месяц и присылаем покупателям в личном кабинете.</p>
+  </div>
+  <div class="steps rv">
+   <div class="step done"><div class="sq">I квартал 2026</div><h4>Котлован и фундамент</h4><p>Плита залита, гидроизоляция выполнена, смонтирован стилобат паркинга.</p><span class="sb">Завершено</span></div>
+   <div class="step done"><div class="sq">III квартал 2026</div><h4>Монолит корпуса А</h4><p>Возведено 9 этажей из 12. Ведётся кладка наружных стен нижних этажей.</p><span class="sb">В работе · 74%</span></div>
+   <div class="step"><div class="sq">II квартал 2027</div><h4>Фасады и остекление</h4><p>Навесные вентилируемые фасады, панорамные окна, входные группы.</p><span class="sb">Запланировано</span></div>
+   <div class="step"><div class="sq">IV квартал 2027</div><h4>Благоустройство и сдача</h4><p>Ландшафтный сад, детские площадки, ввод в эксплуатацию, выдача ключей.</p><span class="sb">Запланировано</span></div>
+  </div>
+ </div>
+</section>
+
+<section id="terms">
+ <div class="wrap">
+  <div class="sec-head rv"><div class="eyebrow">Условия покупки</div><h2 class="disp">Три способа купить</h2></div>
+  <div class="terms rv">
+   <div class="term"><b class="num">4,9%</b><h3>Семейная ипотека</h3><p>Ставка на весь срок для семей с детьми. Первый взнос от 20%, срок до 30 лет. Одобрение за 2 дня, документы принимаем онлайн.</p></div>
+   <div class="term"><b class="num">0%</b><h3>Рассрочка до сдачи</h3><p>Беспроцентная рассрочка до IV квартала 2027 года. Первый платёж от 30%, остальное равными частями раз в квартал.</p></div>
+   <div class="term"><b class="num">Trade-in</b><h3>Зачёт вашей квартиры</h3><p>Оценим и выкупим вашу недвижимость, стоимость зачтём в счёт новой квартиры. Цена фиксируется на 90 дней.</p></div>
+  </div>
+ </div>
+</section>
+
+<section id="cta">
+ <div class="wrap">
+  <div class="fcard rv">
+   <div>
+    <div class="eyebrow">Подборка квартир</div>
+    <h2 class="disp">Пришлём каталог с ценами и свободными этажами</h2>
+    <p class="lead">Менеджер отправит PDF с планировками, актуальными ценами и расчётом ипотеки под ваш бюджет. Без звонков, если не попросите.</p>
+    <p class="note">Отвечаем в рабочие дни с 9:00 до 20:00 по московскому времени. Обычно в течение 15 минут.</p>
+   </div>
+   <div>
+    <form id="leadForm" novalidate>
+     <div class="field"><label for="name">Как к вам обращаться</label><input type="text" id="name" placeholder="Имя" autocomplete="name"><div class="msg">Введите имя</div></div>
+     <div class="field"><label for="phone">Телефон</label><input type="tel" id="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" inputmode="tel"><div class="msg">Введите телефон полностью</div></div>
+     <div class="field"><label for="type">Что рассматриваете</label><select id="type"><option>Студия, 28 м²</option><option selected>1-комнатная, 43 м²</option><option>2-комнатная, 62 м²</option><option>3-комнатная и больше</option><option>Ещё не решил(а)</option></select></div>
+     <button type="submit" class="btn btn-p">Получить подборку</button>
+     <p class="note">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных.</p>
+    </form>
+    <div class="ok" id="ok">
+     <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="28"/><path d="M20 33l9 9 16-18"/></svg>
+     <h3>Заявка принята</h3><p>Подборка уйдёт вам в течение 15 минут. Спасибо!</p>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<footer>
+ <div class="wrap">
+  <div class="ftop">
+   <div>
+    <a href="#top" class="logo"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#fffdfa" opacity=".1"/><path d="M9 23V13l7-5 7 5v10h-5v-6h-4v6z" fill="#c98a5e"/></svg><span>ВЕРХНИЙ САД<small>клубный дом</small></span></a>
+    <p style="max-width:38ch">Нижний Новгород, Верхневолжская набережная. Отдел продаж работает ежедневно с 9:00 до 20:00.</p>
+   </div>
+   <div class="fcol"><h5>Разделы</h5><a href="#about">О комплексе</a><a href="#plans">Планировки</a><a href="#location">Локация</a><a href="#progress">Ход строительства</a><a href="#terms">Условия покупки</a></div>
+   <div class="fcol"><h5>Контакты</h5><a href="tel:+78312000000">+7 831 200-00-00</a><a href="mailto:sales@example.com">sales@example.com</a><a href="#cta">Заказать подборку</a></div>
+  </div>
+  <div class="fbot">
+   <div class="demo">Демонстрационный проект. Жилой комплекс вымышленный, планировки, цены, сроки и контакты условные. Страница сделана как пример работы, а не как реклама недвижимости.</div>
+   <div>Дизайн и вёрстка · 2026</div>
+  </div>
+ </div>
+</footer>
+
+<script>
+(function(){
+ "use strict";
+ var win=document.getElementById('win');
+ if(win){
+  var out='';
+  function grid(x,y,cols,rows,w,h,gx,gy,light){
+   for(var r=0;r<rows;r++)for(var c=0;c<cols;c++){
+    var lit=((r*7+c*3)%5===0)||((r+c)%9===0);
+    out+='<rect x="'+(x+c*(w+gx))+'" y="'+(y+r*(h+gy))+'" width="'+w+'" height="'+h+'" fill="'+(lit?'#f6dcb4':light)+'" opacity="'+(lit?.9:.55)+'"/>';
+   }
+  }
+  grid(374,286,6,12,26,22,12,14,'#7d8f8a');
+  grid(654,218,5,15,30,20,10,12,'#5d7178');
+  grid(896,354,4,10,28,22,12,14,'#7d8f8a');
+  win.innerHTML=out;
+ }
+ var hdr=document.getElementById('hdr');
+ function s(){hdr.classList.toggle('solid',window.scrollY>60);}
+ s();window.addEventListener('scroll',s,{passive:true});
+ var b=document.getElementById('burger'),m=document.getElementById('menu');
+ b.addEventListener('click',function(){b.classList.toggle('x');m.classList.toggle('open');});
+ m.addEventListener('click',function(e){if(e.target.tagName==='A'){b.classList.remove('x');m.classList.remove('open');}});
+ var items=document.querySelectorAll('.rv');
+ if('IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  items.forEach(function(el){io.observe(el);});
+ } else items.forEach(function(el){el.classList.add('in');});
+ document.querySelectorAll('[data-count]').forEach(function(el){
+  var t=parseFloat(el.dataset.count),d=parseInt(el.dataset.dec||0,10),st=null;
+  function step(ts){if(!st)st=ts;var p=Math.min((ts-st)/1400,1),e=1-Math.pow(1-p,3);
+   el.textContent=(t*e).toFixed(d).replace('.',',');if(p<1)requestAnimationFrame(step);}
+  setTimeout(function(){requestAnimationFrame(step);},450);
+ });
+ var phone=document.getElementById('phone');
+ phone.addEventListener('input',function(){
+  var d=phone.value.replace(/\D/g,'');
+  if(d[0]==='8')d='7'+d.slice(1);
+  if(d[0]!=='7')d='7'+d;
+  d=d.slice(0,11);
+  var s='+7';
+  if(d.length>1)s+=' ('+d.slice(1,4);
+  if(d.length>=5)s+=') '+d.slice(4,7);
+  if(d.length>=8)s+='-'+d.slice(7,9);
+  if(d.length>=10)s+='-'+d.slice(9,11);
+  phone.value=s;phone.classList.remove('err');
+ });
+ document.getElementById('name').addEventListener('input',function(){this.classList.remove('err');});
+ var form=document.getElementById('leadForm'),ok=document.getElementById('ok');
+ form.addEventListener('submit',function(e){
+  e.preventDefault();
+  var n=document.getElementById('name'),v=true;
+  if(n.value.trim().length<2){n.classList.add('err');v=false;}
+  if(phone.value.replace(/\D/g,'').length<11){phone.classList.add('err');v=false;}
+  if(!v)return;
+  form.style.display='none';ok.classList.add('on');
+ });
+})();
+</script>
+</body>
+</html>

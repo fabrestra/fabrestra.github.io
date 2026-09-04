@@ -180,11 +180,55 @@ h3{font-family:var(--f-d);font-weight:600;font-size:1.12rem;margin:0 0 8px;lette
   transition:transform .2s ease,border-color .2s ease;
 }
 .work:hover{transform:translateY(-3px);border-color:var(--accent)}
-.workshot{
-  height:150px;border-bottom:1px solid var(--line);position:relative;overflow:hidden;
-  background:var(--surface-2);
+a.work{text-decoration:none;color:inherit;display:flex}
+.openlink{
+  display:inline-flex;align-items:center;gap:6px;margin-top:10px;
+  font-size:.9rem;font-weight:600;color:var(--accent);
 }
-.workshot canvas{display:block;width:100%;height:100%}
+.openlink .arw{transition:transform .18s ease}
+a.work:hover .openlink .arw{transform:translateX(3px)}
+.soon{margin-top:10px;font-size:.88rem;color:var(--ink-dim)}
+.workshot{
+  height:176px;border-bottom:1px solid var(--line);position:relative;overflow:hidden;
+  background:var(--surface-2);display:flex;align-items:flex-end;justify-content:center;
+}
+
+/* мини-макеты продуктов: рамка браузера и узнаваемая композиция интерфейса */
+.frame{width:80%;border-radius:5px 5px 0 0;overflow:hidden;box-shadow:0 10px 26px rgba(0,0,0,.3)}
+.frame .bar{height:15px;background:#1B1F26;display:flex;align-items:center;padding:0 7px;gap:3.5px}
+.frame .bar i{width:4px;height:4px;border-radius:50%;background:#454D58}
+.frame .bar u{flex:1;height:6px;margin-left:6px;border-radius:3px;background:#2B313A}
+
+/* Diority — тёмно-синий, мятный акцент, панель пополнения справа */
+.ui-di{background:#0F1729;padding:9px 10px 14px;display:flex;flex-direction:column;gap:7px}
+.ui-di .nav{display:flex;gap:5px;align-items:center}
+.ui-di .nav em{width:14px;height:5px;border-radius:1px;background:#2FD689}
+.ui-di .nav span{width:12px;height:4px;border-radius:1px;background:#33405C}
+.ui-di .cols{display:flex;gap:8px;align-items:flex-start}
+.ui-di .left{flex:1.1;display:flex;flex-direction:column;gap:5px}
+.ui-di .left span{height:6px;border-radius:1px;background:#E8ECF3}
+.ui-di .left span.w70{width:70%}
+.ui-di .left span.acc{background:#2FD689;width:52%}
+.ui-di .left em{margin-top:3px;height:11px;width:44%;border-radius:3px;background:#2FD689}
+.ui-di .right{flex:.9;background:#18213A;border-radius:3px;padding:6px;display:flex;flex-direction:column;gap:4px}
+.ui-di .right span{height:5px;border-radius:1px;background:#33405C}
+.ui-di .right em{margin-top:2px;height:10px;border-radius:2px;background:#2FD689}
+
+/* Бот — переписка: вопрос и три варианта */
+.ui-bot{background:#17212B;padding:10px 11px 13px;display:flex;flex-direction:column;gap:5px}
+.ui-bot .bubble{background:#232E3A;border-radius:7px 7px 7px 2px;padding:6px 7px;display:flex;flex-direction:column;gap:4px;width:86%}
+.ui-bot .bubble span{height:5px;border-radius:1px;background:#7F8FA0}
+.ui-bot .bubble span.t{background:#E8B838;width:42%}
+.ui-bot .opt{height:13px;width:86%;border-radius:4px;background:#2B3644;border:1px solid #3A4757}
+.ui-bot .opt.hot{border-color:#E8B838}
+
+/* ЖК — лендинг: герой и три планировки */
+.ui-zk{background:#F2F0EB}
+.ui-zk .hero{height:56px;background:linear-gradient(160deg,#93A6AB,#5C6F76);position:relative;overflow:hidden}
+.ui-zk .hero i{position:absolute;bottom:0;background:#465559}
+.ui-zk .cards{display:flex;gap:5px;padding:8px 9px 13px}
+.ui-zk .cards span{flex:1;height:28px;border-radius:2px;background:#DCD8D0}
+.ui-zk .cards span.acc{background:#C1440E;opacity:.85}
 .workbody{padding:20px 22px 22px;display:flex;flex-direction:column;gap:9px;flex:1}
 .workbody p{font-size:.92rem;color:var(--ink-mid)}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:12px}
@@ -345,32 +389,53 @@ footer{padding:34px 0 60px}
     </div>
     <div class="works rv">
 
-      <div class="work">
-        <div class="workshot"><canvas class="mini" data-kind="grid"></canvas></div>
+      <a class="work" href="https://diority.com" target="_blank" rel="noopener">
+        <div class="workshot"><div class="frame"><div class="bar"><i></i><i></i><i></i><u></u></div>
+          <div class="ui-di">
+            <div class="nav"><em></em><span></span><span></span><span></span></div>
+            <div class="cols">
+              <div class="left"><span></span><span class="w70"></span><span class="acc"></span><em></em></div>
+              <div class="right"><span></span><span></span><span></span><em></em></div>
+            </div>
+          </div></div></div>
         <div class="workbody">
           <h3>Diority</h3>
           <p>Магазин цифровых товаров: 159 позиций, каталог по категориям, приём оплаты, обработка и выдача заказа за 15–30 минут. Спроектирован, собран и запущен в одиночку, работает с живыми покупателями каждый день.</p>
           <div class="chips"><span class="chip live">В проде</span><span class="chip">Каталог</span><span class="chip">Оплата</span><span class="chip">Автовыдача</span></div>
+          <span class="openlink">Открыть diority.com <span class="arw">→</span></span>
         </div>
-      </div>
+      </a>
 
       <div class="work">
-        <div class="workshot"><canvas class="mini" data-kind="flow"></canvas></div>
+        <div class="workshot"><div class="frame"><div class="bar"><i></i><i></i><i></i><u></u></div>
+          <div class="ui-bot">
+            <div class="bubble"><span class="t"></span><span></span><span style="width:74%"></span></div>
+            <div class="opt"></div><div class="opt hot"></div><div class="opt"></div>
+          </div></div></div>
         <div class="workbody">
           <h3>Бот с подсчётом по шкалам</h3>
           <p>Тест, результат которого считается по четырём шкалам, каждое прохождение пишется в таблицу. Вопросы вынесены отдельным списком, чтобы владелец правил их сам, без разработчика. Сейчас в разработке — выложу, когда отработает на реальном потоке.</p>
           <div class="chips"><span class="chip">В разработке</span><span class="chip">Telegram</span><span class="chip">Аналитика</span><span class="chip">VPS</span></div>
+          <span class="soon">Ссылка появится после запуска</span>
         </div>
       </div>
 
-      <div class="work">
-        <div class="workshot"><canvas class="mini" data-kind="bars"></canvas></div>
+      <a class="work" href="/zk/" target="_blank" rel="noopener">
+        <div class="workshot"><div class="frame"><div class="bar"><i></i><i></i><i></i><u></u></div>
+          <div class="ui-zk">
+            <div class="hero">
+              <i style="left:12%;width:16%;height:26px"></i><i style="left:31%;width:13%;height:38px"></i>
+              <i style="left:47%;width:18%;height:30px"></i><i style="left:68%;width:14%;height:44px"></i>
+            </div>
+            <div class="cards"><span></span><span class="acc"></span><span></span></div>
+          </div></div></div>
         <div class="workbody">
           <h3>ЖК «Верхний сад»</h3>
           <p>Лендинг застройщика: планировки, ход строительства, условия ипотеки, форма заявки. Один файл на 46 КБ и ноль внешних запросов — открывается мгновенно даже на слабом мобильном интернете.</p>
           <div class="chips"><span class="chip">Концепт</span><span class="chip">46 КБ</span><span class="chip">Mobile-first</span></div>
+          <span class="openlink">Открыть лендинг <span class="arw">→</span></span>
         </div>
-      </div>
+      </a>
 
     </div>
   </div>
@@ -647,8 +712,8 @@ footer{padding:34px 0 60px}
     if(!reduce) requestAnimationFrame(step);
   }
 
-  /* ---------- mini graphics on work cards ---------- */
-  document.querySelectorAll("canvas.mini").forEach(function(c){
+  /* ---------- mini graphics on work cards (не используется: макеты на CSS) ---------- */
+  [].forEach.call([], function(c){
     var x = c.getContext("2d");
     function paint(){
       var d = Math.min(window.devicePixelRatio||1,2);

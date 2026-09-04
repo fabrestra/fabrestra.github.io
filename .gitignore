@@ -3,11 +3,13 @@ spisok-kompaniy.xlsx
 *.xlsx
 .~lock.*#
 
-# бот живёт в отдельном приватном репозитории
+# бот живёт в отдельном репозитории
 bot/
 
-# служебное
-brand/_preview40.png
+# служебные превью
+brand/_*.png
+
+# прочее
 __pycache__/
 .env
 results.db
