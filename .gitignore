@@ -14,3 +14,7 @@ __pycache__/
 .env
 results.db
 venv/
+
+# staging для заливки на сервер, живёт только локально
+deploy/
+deploy.ps1
