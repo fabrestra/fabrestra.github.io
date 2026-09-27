@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ЖК «Верхний сад» — квартиры бизнес-класса на Волге</title>
-<meta name="description" content="Клубный дом на 96 квартир на Верхневолжской набережной. Панорамные окна, приватный сад, подземный паркинг. Сдача IV квартал 2027. Ипотека от 4,9%.">
+<meta name="description" content="Демонстрационный концепт лендинга вымышленного жилого комплекса. Дизайн, адаптивная вёрстка и пример интерактивного подбора планировки.">
 <meta property="og:title" content="ЖК «Верхний сад» — квартиры бизнес-класса на Волге">
-<meta property="og:description" content="96 квартир, приватный сад, паркинг под домом. Сдача IV квартал 2027.">
+<meta property="og:description" content="Демонстрационный концепт лендинга вымышленного жилого комплекса.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d2b26'/%3E%3Cpath d='M9 23V13l7-5 7 5v10h-5v-6h-4v6z' fill='%23c98a5e'/%3E%3C/svg%3E">
 <style>
@@ -18,7 +18,7 @@ a{color:inherit;text-decoration:none}
 svg{display:block;max-width:100%}
 .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
 section{padding:clamp(70px,9vw,128px) 0}
-.disp{font-family:Georgia,"Times New Roman",serif;font-weight:400;line-height:1.06;letter-spacing:-.01em}
+.disp{font-family:Georgia,"Times New Roman",serif;font-weight:400;line-height:1.16;letter-spacing:0}
 h1.disp{font-size:clamp(38px,6.4vw,76px)}
 h2.disp{font-size:clamp(30px,4.4vw,52px)}
 .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--acc);font-weight:700;margin-bottom:18px}
@@ -58,6 +58,7 @@ header:not(.solid) .burger span{background:#fff}
 .hbg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,22,19,.55),rgba(12,22,19,.14) 38%,rgba(12,22,19,.84))}
 .hero .wrap{position:relative;z-index:2;width:100%}
 .hero .eyebrow{color:#e8b98f}
+.demo-label{display:inline-block;margin-bottom:18px;padding:7px 12px;border:1px solid rgba(255,255,255,.65);border-radius:100px;background:rgba(12,22,19,.54);font-size:12px;font-weight:700;letter-spacing:.05em;color:#fff}
 .hero h1{color:#fff;margin-bottom:22px;max-width:15ch}
 .hero p{color:rgba(255,255,255,.86);max-width:46ch;font-size:17px}
 .hact{display:flex;gap:14px;flex-wrap:wrap;margin:34px 0 52px}
@@ -129,9 +130,9 @@ header:not(.solid) .burger span{background:#fff}
 .field .msg{font-size:12px;color:#d2593f;margin-top:6px;display:none}
 .field input.err~.msg{display:block}
 form .btn{width:100%;margin-top:8px}
-.ok{display:none;text-align:center;padding:40px 20px}
+.ok{display:none;text-align:left;padding:22px;margin-top:16px;border:1px solid var(--line);border-radius:12px;background:var(--sand)}
 .ok.on{display:block}
-.ok svg{width:62px;height:62px;margin:0 auto 20px;color:var(--acc)}
+.ok svg{display:none}
 .ok h3{font-family:Georgia,serif;font-weight:400;font-size:32px;margin-bottom:10px}
 .ok p{color:var(--soft)}
 
@@ -160,7 +161,22 @@ footer{background:var(--ink);color:rgba(255,253,250,.62);padding:64px 0 34px;fon
  .plans{grid-template-columns:1fr}.ftop{grid-template-columns:1fr;gap:28px}
  .hact .btn{flex:1}
 }
-@media(max-width:520px){.wrap{padding:0 18px}.feats,.steps{grid-template-columns:1fr}.hero{padding-bottom:44px}}
+@media(max-width:520px){
+ .wrap{padding:0 18px}
+ .feats,.steps{grid-template-columns:1fr}
+ header{padding:10px 0}
+ header.solid{padding:8px 0}
+ .nav{gap:8px}
+ .logo{font-size:12px;letter-spacing:0;gap:7px;max-width:125px;line-height:1.15}
+ .logo svg{width:27px;height:27px}
+ .logo small{font-size:8px;letter-spacing:.08em;margin-top:3px}
+ .ncta{gap:6px}
+ .ncta .btn{padding:10px 12px!important;font-size:12px!important}
+ .hero{min-height:0;padding-top:130px;padding-bottom:44px;align-items:stretch}
+ .hbg::after{background:linear-gradient(180deg,rgba(12,22,19,.82),rgba(12,22,19,.68) 55%,rgba(12,22,19,.88))}
+ .hero .demo-label{max-width:100%;line-height:1.4}
+ .hero h1{font-size:clamp(34px,10vw,46px)}
+}
 </style>
 </head>
 <body>
@@ -175,8 +191,8 @@ footer{background:var(--ink);color:rgba(255,253,250,.62);padding:64px 0 34px;fon
    <a href="#about">О комплексе</a><a href="#plans">Планировки</a><a href="#location">Локация</a><a href="#progress">Строительство</a><a href="#terms">Покупка</a>
   </nav>
   <div class="ncta">
-   <a href="tel:+78312000000" class="nphone">+7 831 200-00-00</a>
-   <a href="#cta" class="btn btn-p" style="padding:12px 22px;font-size:14px">Подобрать квартиру</a>
+   <span class="nphone">Концепт · не отдел продаж</span>
+   <a href="#cta" class="btn btn-p" style="padding:12px 22px;font-size:14px">Открыть демо</a>
    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
   </div>
  </div>
@@ -212,14 +228,15 @@ footer{background:var(--ink);color:rgba(255,253,250,.62);padding:64px 0 34px;fon
   </svg>
  </div>
  <div class="wrap">
+  <div class="demo-label">Демонстрационный проект · объект вымышленный</div>
   <div class="eyebrow rv">Нижний Новгород · Верхневолжская набережная</div>
   <h1 class="disp rv">Дом, из которого видно реку</h1>
   <p class="rv">96 квартир бизнес-класса в трёх корпусах переменной этажности. Приватный сад во дворе, панорамное остекление от пола, подземный паркинг с лифтом до этажа.</p>
-  <div class="hact rv"><a href="#plans" class="btn btn-p">Смотреть планировки</a><a href="#cta" class="btn btn-l">Подборка с ценами</a></div>
+  <div class="hact rv"><a href="#plans" class="btn btn-p">Смотреть планировки</a><a href="#cta" class="btn btn-l">Демо подбора</a></div>
   <div class="hstats rv">
    <div class="stat"><b data-count="96">0</b><span>квартир в доме</span></div>
    <div class="stat"><b data-count="14">0</b><span>этажей максимум</span></div>
-   <div class="stat"><b data-count="4.9" data-dec="1">0</b><span>% ставка по ипотеке</span></div>
+   <div class="stat"><b data-count="3">0</b><span>планировки в демо</span></div>
    <div class="stat"><b>IV&nbsp;кв. 2027</b><span>срок сдачи</span></div>
   </div>
  </div>
@@ -236,7 +253,7 @@ footer{background:var(--ink);color:rgba(255,253,250,.62);padding:64px 0 34px;fon
    <div class="feat"><svg class="fico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 42V20l18-12 18 12v22"/><path d="M18 42V28h12v14"/><path d="M6 42h36"/></svg><h3>Потолки 3,1 м</h3><p>Панорамное остекление от пола до потолка. В квартирах с видом на реку французские балконы.</p></div>
    <div class="feat"><svg class="fico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M24 42s14-9.6 14-21a14 14 0 1 0-28 0c0 11.4 14 21 14 21z"/><circle cx="24" cy="20" r="5.2"/></svg><h3>Двор без машин</h3><p>Приватный сад 2 400 м² по проекту ландшафтного бюро. Въезд в паркинг с внешней стороны участка.</p></div>
    <div class="feat"><svg class="fico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="15" width="34" height="22" rx="3"/><path d="M14 15v-3a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v3"/><path d="M7 26h34"/></svg><h3>Паркинг под домом</h3><p>112 машиномест и кладовые на минус первом этаже. Лифт спускается прямо в паркинг.</p></div>
-   <div class="feat"><svg class="fico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="17"/><path d="M24 13v11l7 5"/></svg><h3>Сдача в 2027</h3><p>Работаем по 214-ФЗ, деньги на эскроу-счетах в банке. Разрешение на строительство получено.</p></div>
+   <div class="feat"><svg class="fico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="17"/><path d="M24 13v11l7 5"/></svg><h3>Этапы проекта</h3><p>Для реального объекта здесь были бы документы застройщика, ход строительства и подтверждённый срок сдачи.</p></div>
   </div>
  </div>
 </section>
@@ -246,7 +263,7 @@ footer{background:var(--ink);color:rgba(255,253,250,.62);padding:64px 0 34px;fon
   <div class="sec-head rv">
    <div class="eyebrow">Планировки</div>
    <h2 class="disp">Выберите свой формат</h2>
-   <p class="lead">В продаже 96 квартир от студий до трёхкомнатных. Ниже три ходовых варианта, полный каталог пришлём в подборке.</p>
+   <p class="lead">В концепте показаны три варианта планировок — от студии до двухкомнатной. Площади и цены служат примером наполнения каталога.</p>
   </div>
   <div class="plans">
 
@@ -263,11 +280,11 @@ footer{background:var(--ink);color:rgba(255,253,250,.62);padding:64px 0 34px;fon
      <text x="50" y="190" font-size="11" font-weight="700" fill="#1d2b26" text-anchor="middle">ПРИХ.</text>
     </svg></div>
     <div class="pbody">
-     <div class="ptag">Свободна</div><h3>Студия</h3>
+     <div class="ptag">Пример 01</div><h3>Студия</h3>
      <div class="pmeta">28,4 м² · корпус А · этажи 3–12</div>
      <div class="prows"><div class="prow"><span>Комнат</span><b>1</b></div><div class="prow"><span>Потолки</span><b>3,1 м</b></div><div class="prow"><span>Вид</span><b>во двор</b></div></div>
-     <div class="pprice"><small>от</small>5 920 000 ₽</div>
-     <a href="#cta" class="btn btn-g">Узнать наличие</a>
+     <div class="pprice"><small>условная цена</small>5 920 000 ₽</div>
+     <a href="#cta" class="btn btn-g">Посмотреть демо</a>
     </div>
    </article>
 
@@ -286,11 +303,11 @@ footer{background:var(--ink);color:rgba(255,253,250,.62);padding:64px 0 34px;fon
      <text x="270" y="176" font-size="11" font-weight="700" fill="#1d2b26" text-anchor="middle">ЛОДЖ.</text>
     </svg></div>
     <div class="pbody">
-     <div class="ptag">Хит продаж</div><h3>Однокомнатная</h3>
+     <div class="ptag">Пример 02</div><h3>Однокомнатная</h3>
      <div class="pmeta">42,8 м² · корпус Б · этажи 4–14</div>
      <div class="prows"><div class="prow"><span>Комнат</span><b>1 + кухня</b></div><div class="prow"><span>Потолки</span><b>3,1 м</b></div><div class="prow"><span>Вид</span><b>на Волгу</b></div></div>
-     <div class="pprice"><small>от</small>8 470 000 ₽</div>
-     <a href="#cta" class="btn btn-p">Забронировать</a>
+     <div class="pprice"><small>условная цена</small>8 470 000 ₽</div>
+     <a href="#cta" class="btn btn-p">Посмотреть демо</a>
     </div>
    </article>
 
@@ -309,11 +326,11 @@ footer{background:var(--ink);color:rgba(255,253,250,.62);padding:64px 0 34px;fon
      <text x="258" y="172" font-size="11" font-weight="700" fill="#1d2b26" text-anchor="middle">ТЕРРАСА</text>
     </svg></div>
     <div class="pbody">
-     <div class="ptag">4 квартиры</div><h3>Двухкомнатная</h3>
+     <div class="ptag">Пример 03</div><h3>Двухкомнатная</h3>
      <div class="pmeta">61,7 м² · корпус Б · этажи 9–14</div>
      <div class="prows"><div class="prow"><span>Комнат</span><b>2 + кухня</b></div><div class="prow"><span>Потолки</span><b>3,4 м</b></div><div class="prow"><span>Вид</span><b>панорама реки</b></div></div>
-     <div class="pprice"><small>от</small>12 350 000 ₽</div>
-     <a href="#cta" class="btn btn-g">Узнать наличие</a>
+     <div class="pprice"><small>условная цена</small>12 350 000 ₽</div>
+     <a href="#cta" class="btn btn-g">Посмотреть демо</a>
     </div>
    </article>
 
@@ -365,7 +382,7 @@ footer{background:var(--ink);color:rgba(255,253,250,.62);padding:64px 0 34px;fon
   <div class="sec-head rv">
    <div class="eyebrow">Ход строительства</div>
    <h2 class="disp">Что уже сделано</h2>
-   <p class="lead">Фотоотчёт обновляем каждый месяц и присылаем покупателям в личном кабинете.</p>
+   <p class="lead">Пример того, как покупатель мог бы отслеживать этапы строительства на сайте. Все статусы ниже вымышлены.</p>
   </div>
   <div class="steps rv">
    <div class="step done"><div class="sq">I квартал 2026</div><h4>Котлован и фундамент</h4><p>Плита залита, гидроизоляция выполнена, смонтирован стилобат паркинга.</p><span class="sb">Завершено</span></div>
@@ -380,9 +397,9 @@ footer{background:var(--ink);color:rgba(255,253,250,.62);padding:64px 0 34px;fon
  <div class="wrap">
   <div class="sec-head rv"><div class="eyebrow">Условия покупки</div><h2 class="disp">Три способа купить</h2></div>
   <div class="terms rv">
-   <div class="term"><b class="num">4,9%</b><h3>Семейная ипотека</h3><p>Ставка на весь срок для семей с детьми. Первый взнос от 20%, срок до 30 лет. Одобрение за 2 дня, документы принимаем онлайн.</p></div>
-   <div class="term"><b class="num">0%</b><h3>Рассрочка до сдачи</h3><p>Беспроцентная рассрочка до IV квартала 2027 года. Первый платёж от 30%, остальное равными частями раз в квартал.</p></div>
-   <div class="term"><b class="num">Trade-in</b><h3>Зачёт вашей квартиры</h3><p>Оценим и выкупим вашу недвижимость, стоимость зачтём в счёт новой квартиры. Цена фиксируется на 90 дней.</p></div>
+   <div class="term"><b class="num">01</b><h3>Ипотека</h3><p>В реальном проекте здесь размещаются подтверждённые банком программы, ставки и условия для покупателя.</p></div>
+   <div class="term"><b class="num">02</b><h3>Рассрочка</h3><p>Блок может объяснять график платежей и срок действия предложения после согласования с застройщиком.</p></div>
+   <div class="term"><b class="num">03</b><h3>Trade-in</h3><p>Пример карточки альтернативного способа покупки. Порядок оценки и зачёта зависит от конкретной компании.</p></div>
   </div>
  </div>
 </section>
@@ -392,21 +409,18 @@ footer{background:var(--ink);color:rgba(255,253,250,.62);padding:64px 0 34px;fon
   <div class="fcard rv">
    <div>
     <div class="eyebrow">Подборка квартир</div>
-    <h2 class="disp">Пришлём каталог с ценами и свободными этажами</h2>
-    <p class="lead">Менеджер отправит PDF с планировками, актуальными ценами и расчётом ипотеки под ваш бюджет. Без звонков, если не попросите.</p>
-    <p class="note">Отвечаем в рабочие дни с 9:00 до 20:00 по московскому времени. Обычно в течение 15 минут.</p>
+    <h2 class="disp">Попробуйте подбор планировки</h2>
+    <p class="lead">Выберите формат квартиры — страница покажет пример карточки. Это интерактивный образец интерфейса, а не заявка в отдел продаж.</p>
+    <p class="note">Номер телефона и другие личные данные не нужны. Информация о квартирах и ценах вымышлена.</p>
    </div>
    <div>
-    <form id="leadForm" novalidate>
-     <div class="field"><label for="name">Как к вам обращаться</label><input type="text" id="name" placeholder="Имя" autocomplete="name"><div class="msg">Введите имя</div></div>
-     <div class="field"><label for="phone">Телефон</label><input type="tel" id="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" inputmode="tel"><div class="msg">Введите телефон полностью</div></div>
+    <form id="leadForm">
      <div class="field"><label for="type">Что рассматриваете</label><select id="type"><option>Студия, 28 м²</option><option selected>1-комнатная, 43 м²</option><option>2-комнатная, 62 м²</option><option>3-комнатная и больше</option><option>Ещё не решил(а)</option></select></div>
-     <button type="submit" class="btn btn-p">Получить подборку</button>
-     <p class="note">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных.</p>
+     <button type="submit" class="btn btn-p">Показать пример</button>
     </form>
-    <div class="ok" id="ok">
+    <div class="ok" id="ok" role="status" aria-live="polite">
      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="32" r="28"/><path d="M20 33l9 9 16-18"/></svg>
-     <h3>Заявка принята</h3><p>Подборка уйдёт вам в течение 15 минут. Спасибо!</p>
+     <h3>Пример подбора</h3><p id="selectionText"></p>
     </div>
    </div>
   </div>
@@ -418,10 +432,10 @@ footer{background:var(--ink);color:rgba(255,253,250,.62);padding:64px 0 34px;fon
   <div class="ftop">
    <div>
     <a href="#top" class="logo"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#fffdfa" opacity=".1"/><path d="M9 23V13l7-5 7 5v10h-5v-6h-4v6z" fill="#c98a5e"/></svg><span>ВЕРХНИЙ САД<small>клубный дом</small></span></a>
-    <p style="max-width:38ch">Нижний Новгород, Верхневолжская набережная. Отдел продаж работает ежедневно с 9:00 до 20:00.</p>
+    <p style="max-width:38ch">Демонстрационный концепт. Жилой комплекс, адрес и коммерческие условия вымышлены.</p>
    </div>
    <div class="fcol"><h5>Разделы</h5><a href="#about">О комплексе</a><a href="#plans">Планировки</a><a href="#location">Локация</a><a href="#progress">Ход строительства</a><a href="#terms">Условия покупки</a></div>
-   <div class="fcol"><h5>Контакты</h5><a href="tel:+78312000000">+7 831 200-00-00</a><a href="mailto:sales@example.com">sales@example.com</a><a href="#cta">Заказать подборку</a></div>
+   <div class="fcol"><h5>Демонстрация</h5><a href="#plans">Посмотреть планировки</a><a href="#cta">Попробовать подбор</a><a href="https://fabrestra.com/">Автор проекта — Fabrestra</a></div>
   </div>
   <div class="fbot">
    <div class="demo">Демонстрационный проект. Жилой комплекс вымышленный, планировки, цены, сроки и контакты условные. Страница сделана как пример работы, а не как реклама недвижимости.</div>
@@ -464,28 +478,17 @@ footer{background:var(--ink);color:rgba(255,253,250,.62);padding:64px 0 34px;fon
    el.textContent=(t*e).toFixed(d).replace('.',',');if(p<1)requestAnimationFrame(step);}
   setTimeout(function(){requestAnimationFrame(step);},450);
  });
- var phone=document.getElementById('phone');
- phone.addEventListener('input',function(){
-  var d=phone.value.replace(/\D/g,'');
-  if(d[0]==='8')d='7'+d.slice(1);
-  if(d[0]!=='7')d='7'+d;
-  d=d.slice(0,11);
-  var s='+7';
-  if(d.length>1)s+=' ('+d.slice(1,4);
-  if(d.length>=5)s+=') '+d.slice(4,7);
-  if(d.length>=8)s+='-'+d.slice(7,9);
-  if(d.length>=10)s+='-'+d.slice(9,11);
-  phone.value=s;phone.classList.remove('err');
- });
- document.getElementById('name').addEventListener('input',function(){this.classList.remove('err');});
  var form=document.getElementById('leadForm'),ok=document.getElementById('ok');
  form.addEventListener('submit',function(e){
   e.preventDefault();
-  var n=document.getElementById('name'),v=true;
-  if(n.value.trim().length<2){n.classList.add('err');v=false;}
-  if(phone.value.replace(/\D/g,'').length<11){phone.classList.add('err');v=false;}
-  if(!v)return;
-  form.style.display='none';ok.classList.add('on');
+  var type=document.getElementById('type').value;
+  var copy={
+   'Студия, 28 м²':'Студия, 28,4 м². В концепте — корпус А, вид во двор, цена от 5 920 000 ₽.',
+   '1-комнатная, 43 м²':'Однокомнатная, 42,8 м². В концепте — корпус Б, вид на Волгу, цена от 8 470 000 ₽.',
+   '2-комнатная, 62 м²':'Двухкомнатная, 61,7 м². В концепте — корпус Б, панорама реки, цена от 12 350 000 ₽.'
+  };
+  document.getElementById('selectionText').textContent=copy[type]||'Для этого формата в демонстрации нет отдельной карточки. Можно посмотреть три примера выше в разделе планировок.';
+  ok.classList.add('on');
  });
 })();
 </script>

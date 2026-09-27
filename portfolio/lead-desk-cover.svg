@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <rect width="800" height="800" fill="#17382f"/>
+  <circle cx="706" cy="92" r="170" fill="#265247" opacity=".58"/>
+  <circle cx="56" cy="747" r="186" fill="#265247" opacity=".42"/>
+  <text x="66" y="91" fill="#cce2d7" font-family="Arial,sans-serif" font-size="21" font-weight="bold" letter-spacing="4">FABRESTRA / ДЕМО</text>
+  <text x="66" y="166" fill="#fff" font-family="Arial,sans-serif" font-size="52" font-weight="bold">Пульт обращений</text>
+  <text x="66" y="207" fill="#b4cfc1" font-family="Arial,sans-serif" font-size="22">Ответственный · следующий шаг · срок</text>
+  <rect x="65" y="268" width="670" height="465" rx="17" fill="#f1f3f0"/>
+  <rect x="65" y="268" width="670" height="45" rx="17" fill="#fff"/>
+  <rect x="65" y="296" width="670" height="17" fill="#fff"/>
+  <circle cx="91" cy="290" r="5" fill="#de7352"/><circle cx="108" cy="290" r="5" fill="#d9c570"/><circle cx="125" cy="290" r="5" fill="#8db9a3"/>
+  <text x="151" y="295" fill="#35564b" font-family="Arial,sans-serif" font-size="15" font-weight="bold">Очередь обращений</text>
+  <rect x="90" y="336" width="195" height="91" rx="10" fill="#fff" stroke="#dce3dd"/>
+  <rect x="302" y="336" width="195" height="91" rx="10" fill="#fff" stroke="#dce3dd"/>
+  <rect x="514" y="336" width="195" height="91" rx="10" fill="#fff" stroke="#dce3dd"/>
+  <text x="108" y="380" fill="#17382f" font-family="Arial,sans-serif" font-size="36" font-weight="bold">5</text>
+  <text x="108" y="408" fill="#667a6f" font-family="Arial,sans-serif" font-size="14">Всего</text>
+  <text x="320" y="380" fill="#17382f" font-family="Arial,sans-serif" font-size="36" font-weight="bold">2</text>
+  <text x="320" y="408" fill="#667a6f" font-family="Arial,sans-serif" font-size="14">В работе</text>
+  <text x="532" y="380" fill="#a95732" font-family="Arial,sans-serif" font-size="36" font-weight="bold">1</text>
+  <text x="532" y="408" fill="#667a6f" font-family="Arial,sans-serif" font-size="14">Срок прошёл</text>
+  <rect x="90" y="450" width="619" height="74" rx="9" fill="#fff" stroke="#dce3dd"/>
+  <text x="108" y="479" fill="#20372f" font-family="Arial,sans-serif" font-size="18" font-weight="bold">Мастерская «Север»</text>
+  <text x="108" y="505" fill="#718077" font-family="Arial,sans-serif" font-size="13">Сайт · администратор</text>
+  <rect x="560" y="469" width="126" height="32" rx="16" fill="#fff1e8"/>
+  <text x="581" y="490" fill="#aa532d" font-family="Arial,sans-serif" font-size="13" font-weight="bold">Просрочено</text>
+  <rect x="90" y="534" width="619" height="74" rx="9" fill="#fff" stroke="#dce3dd"/>
+  <text x="108" y="563" fill="#20372f" font-family="Arial,sans-serif" font-size="18" font-weight="bold">Студия «Линия»</text>
+  <text x="108" y="589" fill="#718077" font-family="Arial,sans-serif" font-size="13">Telegram · менеджер</text>
+  <rect x="560" y="553" width="126" height="32" rx="16" fill="#e7efff"/>
+  <text x="584" y="574" fill="#315a98" font-family="Arial,sans-serif" font-size="13" font-weight="bold">В работе</text>
+  <rect x="90" y="618" width="619" height="74" rx="9" fill="#fff" stroke="#dce3dd"/>
+  <text x="108" y="647" fill="#20372f" font-family="Arial,sans-serif" font-size="18" font-weight="bold">Сервис «Орбита»</text>
+  <text x="108" y="673" fill="#718077" font-family="Arial,sans-serif" font-size="13">Телефон · мастер</text>
+  <rect x="560" y="637" width="126" height="32" rx="16" fill="#fff5db"/>
+  <text x="590" y="658" fill="#8a6413" font-family="Arial,sans-serif" font-size="13" font-weight="bold">Ожидаем</text>
+</svg>

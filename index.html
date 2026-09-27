@@ -65,6 +65,11 @@ nav{
   border-bottom:1px solid var(--line);
 }
 .navin{max-width:var(--w);margin:0 auto;padding:0 26px;height:64px;display:flex;align-items:center;gap:28px}
+@media (max-width:600px){
+  .navin{padding:0 18px;gap:8px}
+  .mark{font-size:1rem}
+  .navin>.btn{font-size:.8rem;padding:9px 12px;white-space:nowrap}
+}
 .mark{
   font-family:var(--f-d);font-weight:800;font-size:1.12rem;letter-spacing:.01em;
   margin-right:auto;display:flex;align-items:center;gap:9px;text-decoration:none;
@@ -100,7 +105,7 @@ nav{
 @media (max-width:940px){.herogrid{grid-template-columns:1fr;gap:38px}}
 h1{
   font-family:var(--f-d);font-weight:800;
-  font-size:clamp(2.05rem,4.6vw,3.15rem);line-height:1.06;letter-spacing:-.02em;
+  font-size:clamp(2.05rem,4.6vw,3.15rem);line-height:1.18;letter-spacing:0;
   margin:18px 0 20px;text-wrap:balance;
 }
 h1 em{font-style:normal;color:var(--accent)}
@@ -136,7 +141,7 @@ section{padding:78px 0;border-bottom:1px solid var(--line)}
 .shead{margin-bottom:38px;max-width:62ch}
 h2{
   font-family:var(--f-d);font-weight:800;
-  font-size:clamp(1.5rem,3.2vw,2.15rem);line-height:1.14;letter-spacing:-.018em;
+  font-size:clamp(1.5rem,3.2vw,2.15rem);line-height:1.24;letter-spacing:0;
   margin:12px 0 12px;text-wrap:balance;
 }
 h3{font-family:var(--f-d);font-weight:600;font-size:1.12rem;margin:0 0 8px;letter-spacing:-.005em}
@@ -230,8 +235,20 @@ a.work:hover .openlink .arw{transform:translateX(3px)}
 .ui-zk .cards{display:flex;gap:5px;padding:8px 9px 13px}
 .ui-zk .cards span{flex:1;height:28px;border-radius:2px;background:#DCD8D0}
 .ui-zk .cards span.acc{background:#C1440E;opacity:.85}
+.ui-leads,.ui-estimate{background:#F1F3F0;padding:11px 12px 18px;font:600 8px Arial,sans-serif;color:#19382F}
+.ui-leads .minihead,.ui-estimate .minihead{font-size:12px;margin-bottom:8px}
+.ui-leads .ministats{display:flex;gap:5px;margin-bottom:7px}
+.ui-leads .ministats span{flex:1;background:#fff;border:1px solid #DBE2DC;border-radius:4px;padding:8px 5px;font-size:13px}
+.ui-leads .ministats small{display:block;color:#66766E;font-size:5px;margin-top:3px}
+.ui-leads .minirow{background:#fff;border:1px solid #DBE2DC;border-radius:4px;padding:6px 8px;margin-bottom:4px;display:flex;justify-content:space-between}
+.ui-leads .minirow b{color:#A45B3A}
+.ui-estimate .minigrid{display:grid;grid-template-columns:1.5fr .8fr;gap:6px}
+.ui-estimate .minilines,.ui-estimate .minitotal{background:#fff;border:1px solid #DBE2DC;border-radius:4px;padding:7px}
+.ui-estimate .minilines span{display:block;border-bottom:1px solid #E5E8E4;padding:5px 0}
+.ui-estimate .minilines span:last-child{border:0}
+.ui-estimate .minitotal strong{display:block;margin-top:24px;font-size:13px}
 .workbody{padding:20px 22px 22px;display:flex;flex-direction:column;gap:9px;flex:1}
-.workbody p{font-size:.92rem;color:var(--ink-mid)}
+.workbody p{font-size:.95rem;line-height:1.7;color:var(--ink-mid)}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:12px}
 .chip{
   font-family:var(--f-m);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
@@ -287,7 +304,7 @@ footer{padding:34px 0 60px}
       <a href="#works">Работы</a>
       <a href="#prices">Цены</a>
     </div>
-    <a class="btn" href="#contact">Разбор за 20 минут <span class="arw">→</span></a>
+    <a class="btn" href="#contact">Обсудить задачу <span class="arw">→</span></a>
   </div>
 </nav>
 
@@ -396,8 +413,8 @@ footer{padding:34px 0 60px}
         </div></div>
         <div class="workbody">
           <h3>Diority</h3>
-          <p>Магазин цифровых товаров: 159 позиций, каталог по категориям, приём оплаты, обработка и выдача заказа за 15–30 минут. Спроектирован, собран и запущен в одиночку, работает с живыми покупателями каждый день.</p>
-          <div class="chips"><span class="chip live">В проде</span><span class="chip">Каталог</span><span class="chip">Оплата</span><span class="chip">Автовыдача</span></div>
+          <p>Собственный магазин цифровых товаров: каталог по категориям, оформление заказа, обработка и выдача. Спроектирован, собран и запущен самостоятельно. Текущую работу можно проверить на сайте.</p>
+          <div class="chips"><span class="chip live">В проде</span><span class="chip">Каталог</span><span class="chip">Заказы</span></div>
           <span class="openlink">Открыть diority.com <span class="arw">→</span></span>
         </div>
       </a>
@@ -420,9 +437,33 @@ footer{padding:34px 0 60px}
         </div></div>
         <div class="workbody">
           <h3>ЖК «Верхний сад»</h3>
-          <p>Лендинг застройщика: планировки, ход строительства, условия ипотеки, форма заявки. Один файл на 46 КБ и ноль внешних запросов — открывается мгновенно даже на слабом мобильном интернете.</p>
-          <div class="chips"><span class="chip">Концепт</span><span class="chip">46 КБ</span><span class="chip">Mobile-first</span></div>
+          <p>Демонстрационный лендинг вымышленного жилого комплекса: планировки, этапы строительства и интерактивный пример подбора. Адаптивная страница в одном HTML-файле, без сбора персональных данных.</p>
+          <div class="chips"><span class="chip">Концепт</span><span class="chip">Адаптивная вёрстка</span><span class="chip">Демо подбора</span></div>
           <span class="openlink">Открыть лендинг <span class="arw">→</span></span>
+        </div>
+      </a>
+
+      <a class="work" href="/demos/lead-desk/" target="_blank" rel="noopener">
+        <div class="workshot"><div class="frame"><div class="bar"><i></i><i></i><i></i><u></u></div>
+          <div class="ui-leads" aria-hidden="true"><div class="minihead">Пульт обращений</div><div class="ministats"><span>5<small>Всего</small></span><span>2<small>В работе</small></span><span>1<small>Просрочено</small></span></div><div class="minirow">Мастерская «Север» <b>Сегодня</b></div><div class="minirow">Студия «Линия» <b>Завтра</b></div></div>
+        </div></div>
+        <div class="workbody">
+          <h3>Пульт обращений</h3>
+          <p>Интерактивный прототип для контроля входящих: обращение, ответственный, следующий шаг, срок и статус. Можно добавить запись, найти просроченное и выгрузить CSV. Данные остаются в браузере — это демонстрация процесса, не готовая многопользовательская CRM.</p>
+          <div class="chips"><span class="chip">Демо</span><span class="chip">Учёт заявок</span><span class="chip">CSV</span></div>
+          <span class="openlink">Попробовать демо <span class="arw">→</span></span>
+        </div>
+      </a>
+
+      <a class="work" href="/demos/estimate/" target="_blank" rel="noopener">
+        <div class="workshot"><div class="frame"><div class="bar"><i></i><i></i><i></i><u></u></div>
+          <div class="ui-estimate" aria-hidden="true"><div class="minihead">Смета за минуту</div><div class="minigrid"><div class="minilines"><span>Структура и дизайн</span><span>Адаптивная вёрстка</span><span>Обработка обращения</span></div><div class="minitotal">Итог<strong>35 100 ₽</strong></div></div></div>
+        </div></div>
+        <div class="workbody">
+          <h3>Смета за минуту</h3>
+          <p>Рабочий прототип коммерческого предложения: состав работ, количество, цена и скидка пересчитываются сразу. Результат можно распечатать или сохранить как PDF. Условия и позиции адаптируются под конкретную компанию.</p>
+          <div class="chips"><span class="chip">Демо</span><span class="chip">Сметы</span><span class="chip">PDF</span></div>
+          <span class="openlink">Собрать смету <span class="arw">→</span></span>
         </div>
       </a>
 
