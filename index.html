@@ -265,6 +265,11 @@ a.work:hover .openlink .arw{transform:translateX(3px)}
 .price .amt{font-family:var(--f-d);font-weight:800;font-size:1.72rem;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .price .amt span{font-size:.9rem;font-family:var(--f-b);font-weight:500;color:var(--ink-mid)}
 .price p{font-size:.92rem;color:var(--ink-mid)}
+.small-task{margin-top:18px;border:1px solid var(--line);background:var(--surface);padding:27px 30px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+.small-task h3{margin:5px 0 8px;font-size:1.26rem}
+.small-task p{margin:0;color:var(--ink-mid);font-size:.94rem;max-width:720px}
+.small-task .btn{white-space:nowrap}
+@media (max-width:700px){.small-task{grid-template-columns:1fr;padding:23px}.small-task .btn{justify-self:start}}
 
 /* ---------- about / cta ---------- */
 .two{display:grid;grid-template-columns:1fr 1fr;gap:44px}
@@ -504,6 +509,14 @@ footer{padding:34px 0 60px}
         <div class="amt">от 600 000 ₽</div>
         <p>Внутренний продукт или MVP целиком. Берусь только с теми, с кем уже работали, — иначе риск слишком высок для обеих сторон.</p>
       </div>
+    </div>
+    <div class="small-task rv">
+      <div>
+        <div class="mono">Отдельно от больших проектов</div>
+        <h3>Есть одна конкретная задача?</h3>
+        <p>Возьмусь и за ограниченную работу: поправить существующий сайт или бот, собрать форму с выгрузкой в таблицу, сделать небольшой внутренний инструмент. Сначала согласуем, что именно должно работать и как это проверим; срок и цену назову после короткого ТЗ. Полноценную CRM не буду выдавать за такую задачу.</p>
+      </div>
+      <a class="btn" href="#contact">Показать задачу <span class="arw">→</span></a>
     </div>
   </div>
 </section>
