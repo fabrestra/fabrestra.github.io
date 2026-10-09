@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="620" viewBox="0 0 760 620" role="img" aria-labelledby="title desc">
+<title id="title">Нерв: топология запросов</title><desc id="desc">API, маршрутизатор, два рабочих узла и хранилище соединены линиями передачи.</desc>
+<defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#24404a" stroke-width=".5"/></pattern><linearGradient id="shine" x2="1" y2="1"><stop stop-color="#37616a"/><stop offset=".55" stop-color="#132830"/><stop offset="1" stop-color="#0d191e"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="7"/></filter></defs>
+<style>text{font-family:monospace;fill:#dcefeb}.small{font-size:11px;fill:#8babba}.route{stroke:#32616a;fill:none;stroke-width:2}.pulse{stroke:#6affde;fill:none;stroke-width:3;stroke-dasharray:8 55;animation:none}@keyframes flow{to{stroke-dashoffset:-252}}@media(prefers-reduced-motion:reduce){.pulse{animation:none}}</style>
+<path fill="url(#grid)" d="M0 0H760V620H0z"/>
+<ellipse cx="390" cy="325" rx="150" ry="145" fill="#55e8da" opacity=".035"/>
+<path class="route" d="M90 314H295M405 314H470V180H550M405 314H470V445H550M655 180H700V314H715M655 445H700V314"/>
+<path class="pulse" d="M90 314H295M405 314H470V180H550M405 314H470V445H550M655 180H700V314H715M655 445H700V314"/>
+<path d="M296 234L350 202L404 234V395L350 426L296 395Z" fill="url(#shine)" stroke="#7ccfca"/>
+<path d="M296 234L350 266L404 234M350 266V426" fill="none" stroke="#659a9a"/>
+<path d="M296 234L350 202L404 234L350 266Z" fill="#47757a"/>
+<path d="M305 255L335 272V371L305 354Z" fill="#09161e" stroke="#37616a"/>
+<path d="M313 275V306M313 318V342" stroke="#d7ff71" stroke-width="3"/>
+<circle cx="384" cy="364" r="4" fill="#55e8da"/><circle cx="384" cy="379" r="4" fill="#d7ff71"/>
+<rect x="26" y="280" width="104" height="68" rx="8" fill="url(#shine)" stroke="#759495"/><text x="53" y="306" font-size="12">API IN</text><text x="51" y="329" class="small">→ INPUT</text>
+<rect x="551" y="140" width="109" height="82" rx="8" fill="url(#shine)" stroke="#65a8a7"/><circle cx="570" cy="161" r="3" fill="#d7ff71"/><text x="567" y="186" font-size="13">NODE / A</text><text x="567" y="207" class="small">ACTIVE</text>
+<rect x="551" y="405" width="109" height="82" rx="8" fill="url(#shine)" stroke="#65a8a7"/><circle cx="570" cy="426" r="3" fill="#d7ff71"/><text x="567" y="451" font-size="13">NODE / B</text><text x="567" y="472" class="small">STANDBY</text>
+<text x="285" y="465" font-size="13">ROUTING CORE</text><text x="284" y="486" class="small">SIGNAL PROCESSOR</text>
+<text x="44" y="76" class="small">NERV / REQUEST TOPOLOGY</text><text x="44" y="100" font-size="15">EVERY SIGNAL HAS A PATH.</text>
+<text x="42" y="554" class="small">INPUT / ROUTE / PROCESS / RESPOND</text><path d="M42 570H700" stroke="#37616a"/><text x="620" y="593" class="small">TRACE / 01</text>
+</svg>

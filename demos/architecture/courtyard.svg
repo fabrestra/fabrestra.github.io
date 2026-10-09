@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 640" role="img" aria-label="Графический этюд дома с внутренним двором">
+<defs><linearGradient id="wall" x2="0" y2="1"><stop stop-color="#eeeae0"/><stop offset="1" stop-color="#cacdc1"/></linearGradient><pattern id="stripes" width="11" height="11" patternUnits="userSpaceOnUse" patternTransform="rotate(30)"><path d="M0 0V11" stroke="#263b36" stroke-opacity=".13"/></pattern></defs>
+<path d="M93 461L391 618L749 437L480 297Z" fill="#263b36" opacity=".08"/>
+<g stroke="#263b36" stroke-width="1.5" stroke-linejoin="round">
+<path d="M113 290L388 141L707 308L435 459Z" fill="#f4f0e8"/>
+<path d="M113 290V441L435 607V459Z" fill="url(#wall)"/>
+<path d="M435 459V607L707 456V308Z" fill="#b6c0b2"/>
+<path d="M253 305L391 229L559 315L421 392Z" fill="#748b73"/>
+<path d="M253 305V347L421 434V392Z" fill="#d3d4c6"/>
+<path d="M421 392V434L559 357V315Z" fill="#a3b59d"/>
+<path d="M253 347L391 271L559 357L421 434Z" fill="#96aa88"/>
+<path d="M148 331L207 362V455L148 425Z" fill="#344d46"/>
+<path d="M229 373L391 456V551L229 468Z" fill="#344d46"/>
+<path d="M466 462L672 348V441L466 555Z" fill="#344d46"/>
+<g stroke="#aab4a5"><path d="M269 394V488M309 414V509M349 435V529M507 439V532M549 416V509M590 394V486M632 371V462"/></g>
+<path d="M113 441L435 607L707 456" fill="none"/>
+<path d="M98 284L389 126L723 301M103 449L435 621L722 462" fill="none" stroke-opacity=".3"/>
+</g>
+<g fill="#5d795f"><ellipse cx="395" cy="327" rx="25" ry="17"/><ellipse cx="423" cy="342" rx="18" ry="12"/></g>
+<path d="M395 327V374M423 342V387" stroke="#263b36" stroke-width="2"/>
+<path d="M113 441V495M707 456V510M113 482L435 646" stroke="#263b36" stroke-opacity=".3" fill="none"/>
+<path d="M643 54H749M696 1V107" stroke="#263b36" stroke-opacity=".2"/>
+<circle cx="696" cy="54" r="28" stroke="#263b36" stroke-opacity=".2" fill="none"/>
+<path d="M706 40L686 68L692 49Z" fill="#bf6748"/>
+</svg>
