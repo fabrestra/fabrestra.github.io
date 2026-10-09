@@ -1,807 +1,186 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Fabrestra: сайты, Telegram-боты и автоматизация документов. Собственные проекты и живые демо. Состав работ, цена и срок до начала разработки.">
-<meta property="og:title" content="Fabrestra — сайты, боты и рабочие инструменты">
-<meta property="og:description" content="Посмотрите собственные проекты и попробуйте демо. Согласуем результат, стоимость и срок до начала работы.">
-<meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23C1440E'/%3E%3Crect x='7' y='9' width='18' height='3' fill='%23fff'/%3E%3Crect x='7' y='20' width='12' height='3' fill='%23fff'/%3E%3C/svg%3E">
-<title>Fabrestra</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;800&family=Golos+Text:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
-
-<style>
-:root{
-  --ground:#E3E5E2; --surface:#F0F1EF; --surface-2:#D9DCD9;
-  --line:#C0C5C1; --line-soft:#D2D6D3;
-  --ink:#131719; --ink-mid:#57615F; --ink-dim:#7C8683;
-  --accent:#C1440E; --accent-deep:#8E300A; --accent-soft:#F4DCD1;
-  --signal:#B07C05; --signal-soft:#F0E2BE;
-  --steel:#47585F;
-  --f-d:"Bitter",Georgia,serif;
-  --f-b:"Golos Text","Segoe UI",system-ui,sans-serif;
-  --f-m:"IBM Plex Mono",Consolas,ui-monospace,monospace;
-  --w:1140px;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --ground:#0F1213; --surface:#181C1D; --surface-2:#212627;
-    --line:#2E3436; --line-soft:#232829;
-    --ink:#E5E7E4; --ink-mid:#97A09D; --ink-dim:#727B78;
-    --accent:#E4682F; --accent-deep:#B84A18; --accent-soft:#3B1E0F;
-    --signal:#E8B838; --signal-soft:#3A2F10;
-    --steel:#7E9299;
-  }
-}
-:root[data-theme="dark"]{
-  --ground:#0F1213; --surface:#181C1D; --surface-2:#212627;
-  --line:#2E3436; --line-soft:#232829;
-  --signal:#E8B838; --signal-soft:#3A2F10;
-  --ink:#E5E7E4; --ink-mid:#97A09D; --ink-dim:#727B78;
-  --accent:#E4682F; --accent-deep:#B84A18; --accent-soft:#3B1E0F;
-  --steel:#7E9299;
-}
-
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;background:var(--ground);color:var(--ink);
-  font-family:var(--f-b);font-size:17px;line-height:1.6;
-  -webkit-font-smoothing:antialiased;overflow-x:hidden;
-}
-.w{max-width:var(--w);margin:0 auto;padding:0 26px}
-p{margin:0;max-width:64ch}
-a{color:inherit}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
-
-.mono{font-family:var(--f-m);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim)}
-
-/* ---------- nav ---------- */
-nav{
-  position:sticky;top:0;z-index:50;background:var(--ground);
-  border-bottom:1px solid var(--line);
-}
-.navin{max-width:var(--w);margin:0 auto;padding:0 26px;height:64px;display:flex;align-items:center;gap:28px}
-@media (max-width:600px){
-  .navin{padding:0 18px;gap:8px}
-  .mark{font-size:1rem}
-  .navin>.btn{font-size:.8rem;padding:9px 12px;white-space:nowrap}
-}
-.mark{
-  font-family:var(--f-d);font-weight:800;font-size:1.12rem;letter-spacing:.01em;
-  margin-right:auto;display:flex;align-items:center;gap:9px;text-decoration:none;
-}
-.mark .glyph{
-  width:22px;height:22px;flex:none;border:2px solid var(--accent);
-  position:relative;background:var(--accent-soft);
-}
-.mark .glyph::after{content:"";position:absolute;left:3px;top:3px;right:3px;height:2px;background:var(--accent)}
-.mark .glyph::before{content:"";position:absolute;left:3px;bottom:3px;right:8px;height:2px;background:var(--accent)}
-.navlinks{display:flex;gap:22px;font-size:.92rem}
-.navlinks a{text-decoration:none;color:var(--ink-mid)}
-.navlinks a:hover{color:var(--ink)}
-@media (max-width:760px){.navlinks{display:none}}
-
-.btn{
-  display:inline-flex;align-items:center;gap:9px;
-  background:var(--accent);color:#fff;text-decoration:none;
-  font-weight:600;font-size:.94rem;padding:11px 20px;border:none;cursor:pointer;
-  font-family:var(--f-b);transition:background .18s ease,transform .18s ease;
-}
-.btn:hover{background:var(--accent-deep);transform:translateY(-1px)}
-.btn-ghost{
-  background:transparent;color:var(--ink);border:1px solid var(--line);
-}
-.btn-ghost:hover{background:var(--surface);border-color:var(--ink-dim);color:var(--ink)}
-.btn .arw{transition:transform .18s ease}
-.btn:hover .arw{transform:translateX(3px)}
-
-/* ---------- hero ---------- */
-.hero{padding:76px 0 60px;border-bottom:1px solid var(--line)}
-.herogrid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
-@media (max-width:940px){.herogrid{grid-template-columns:1fr;gap:38px}}
-h1{
-  font-family:var(--f-d);font-weight:800;
-  font-size:clamp(2.05rem,4.6vw,3.15rem);line-height:1.18;letter-spacing:0;
-  margin:18px 0 20px;text-wrap:balance;
-}
-h1 em{font-style:normal;color:var(--accent)}
-.sub{font-size:1.1rem;color:var(--ink-mid);max-width:48ch}
-.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-
-.stage{
-  border:1px solid var(--line);background:var(--surface);
-  padding:16px 16px 12px;position:relative;
-}
-.stage canvas{display:block;width:100%;height:280px}
-.stagecap{
-  display:flex;justify-content:space-between;gap:12px;
-  border-top:1px solid var(--line-soft);margin-top:12px;padding-top:10px;
-}
-
-/* ---------- band ---------- */
-.band{border-bottom:1px solid var(--line);background:var(--surface)}
-.bandgrid{display:grid;grid-template-columns:repeat(3,1fr)}
-@media (max-width:760px){.bandgrid{grid-template-columns:1fr}}
-.bcell{padding:26px 26px;border-right:1px solid var(--line-soft)}
-.bcell:last-child{border-right:none}
-@media (max-width:760px){.bcell{border-right:none;border-bottom:1px solid var(--line-soft)}}
-.bcell .big{
-  font-family:var(--f-d);font-weight:800;font-size:2.5rem;line-height:1;
-  letter-spacing:-.02em;color:var(--accent);font-variant-numeric:tabular-nums;
-}
-.bcell .big small{font-size:1.05rem;font-family:var(--f-b);font-weight:600;color:var(--ink);margin-left:6px}
-.bcell .cap{margin-top:9px;font-size:.93rem;color:var(--ink-mid);max-width:34ch}
-
-/* ---------- sections ---------- */
-section{padding:78px 0;border-bottom:1px solid var(--line)}
-.shead{margin-bottom:38px;max-width:62ch}
-h2{
-  font-family:var(--f-d);font-weight:800;
-  font-size:clamp(1.5rem,3.2vw,2.15rem);line-height:1.24;letter-spacing:0;
-  margin:12px 0 12px;text-wrap:balance;
-}
-h3{font-family:var(--f-d);font-weight:600;font-size:1.12rem;margin:0 0 8px;letter-spacing:-.005em}
-.shead p{color:var(--ink-mid)}
-
-.cols3{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
-.cell{background:var(--ground);padding:26px 24px;display:flex;flex-direction:column;gap:10px}
-.cell .n{font-family:var(--f-m);font-size:11px;letter-spacing:.14em;color:var(--signal)}
-.hazard{
-  height:8px;margin-bottom:26px;
-  background:repeating-linear-gradient(45deg,var(--signal) 0 9px,var(--surface-2) 9px 18px);
-}
-.cell p{font-size:.96rem;color:var(--ink-mid)}
-
-/* ---------- process ---------- */
-.proc{position:relative;display:flex;flex-direction:column;gap:0}
-.prow{
-  display:grid;grid-template-columns:88px 1fr;gap:0;
-  border-left:2px solid var(--line);position:relative;
-}
-.prow .day{
-  padding:20px 0 20px 22px;font-family:var(--f-m);font-size:11.5px;
-  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dim);
-}
-.prow .txt{padding:20px 0 20px 6px}
-.prow .txt p{font-size:.97rem;color:var(--ink-mid);margin-top:5px}
-.prow::before{
-  content:"";position:absolute;left:-7px;top:26px;width:12px;height:12px;
-  background:var(--ground);border:2px solid var(--line);border-radius:50%;
-}
-.prow.on::before{border-color:var(--accent);background:var(--accent)}
-.prow.on .day{color:var(--accent)}
-.procfill{position:absolute;left:-2px;top:0;width:2px;background:var(--accent);height:0;transition:height .45s ease}
-@media (max-width:600px){.prow{grid-template-columns:1fr}.prow .day{padding-bottom:0}.prow .txt{padding-left:22px}}
-
-/* ---------- works ---------- */
-.works{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
-.work{
-  border:1px solid var(--line);background:var(--surface);
-  display:flex;flex-direction:column;
-  transition:transform .2s ease,border-color .2s ease;
-}
-.work:hover{transform:translateY(-3px);border-color:var(--accent)}
-a.work{text-decoration:none;color:inherit;display:flex}
-.openlink{
-  display:inline-flex;align-items:center;gap:6px;margin-top:10px;
-  font-size:.9rem;font-weight:600;color:var(--accent);
-}
-.openlink .arw{transition:transform .18s ease}
-a.work:hover .openlink .arw{transform:translateX(3px)}
-.soon{margin-top:10px;font-size:.88rem;color:var(--ink-dim)}
-.workshot{
-  height:176px;border-bottom:1px solid var(--line);position:relative;overflow:hidden;
-  background:var(--surface-2);display:flex;align-items:flex-end;justify-content:center;
-}
-
-/* мини-макеты продуктов: рамка браузера и узнаваемая композиция интерфейса */
-.frame{width:80%;border-radius:5px 5px 0 0;overflow:hidden;box-shadow:0 10px 26px rgba(0,0,0,.3)}
-.frame .bar{height:15px;background:#1B1F26;display:flex;align-items:center;padding:0 7px;gap:3.5px}
-.frame .bar i{width:4px;height:4px;border-radius:50%;background:#454D58}
-.frame .bar u{flex:1;height:6px;margin-left:6px;border-radius:3px;background:#2B313A}
-.frame img{display:block;width:100%;height:auto}
-
-/* Diority — тёмно-синий, мятный акцент, панель пополнения справа */
-.ui-di{background:#0F1729;padding:9px 10px 14px;display:flex;flex-direction:column;gap:7px}
-.ui-di .nav{display:flex;gap:5px;align-items:center}
-.ui-di .nav em{width:14px;height:5px;border-radius:1px;background:#2FD689}
-.ui-di .nav span{width:12px;height:4px;border-radius:1px;background:#33405C}
-.ui-di .cols{display:flex;gap:8px;align-items:flex-start}
-.ui-di .left{flex:1.1;display:flex;flex-direction:column;gap:5px}
-.ui-di .left span{height:6px;border-radius:1px;background:#E8ECF3}
-.ui-di .left span.w70{width:70%}
-.ui-di .left span.acc{background:#2FD689;width:52%}
-.ui-di .left em{margin-top:3px;height:11px;width:44%;border-radius:3px;background:#2FD689}
-.ui-di .right{flex:.9;background:#18213A;border-radius:3px;padding:6px;display:flex;flex-direction:column;gap:4px}
-.ui-di .right span{height:5px;border-radius:1px;background:#33405C}
-.ui-di .right em{margin-top:2px;height:10px;border-radius:2px;background:#2FD689}
-
-/* Бот — переписка: вопрос и три варианта */
-.ui-bot{background:#17212B;padding:10px 11px 13px;display:flex;flex-direction:column;gap:5px}
-.ui-bot .bubble{background:#232E3A;border-radius:7px 7px 7px 2px;padding:6px 7px;display:flex;flex-direction:column;gap:4px;width:86%}
-.ui-bot .bubble span{height:5px;border-radius:1px;background:#7F8FA0}
-.ui-bot .bubble span.t{background:#E8B838;width:42%}
-.ui-bot .opt{height:13px;width:86%;border-radius:4px;background:#2B3644;border:1px solid #3A4757}
-.ui-bot .opt.hot{border-color:#E8B838}
-
-/* ЖК — лендинг: герой и три планировки */
-.ui-zk{background:#F2F0EB}
-.ui-zk .hero{height:56px;background:linear-gradient(160deg,#93A6AB,#5C6F76);position:relative;overflow:hidden}
-.ui-zk .hero i{position:absolute;bottom:0;background:#465559}
-.ui-zk .cards{display:flex;gap:5px;padding:8px 9px 13px}
-.ui-zk .cards span{flex:1;height:28px;border-radius:2px;background:#DCD8D0}
-.ui-zk .cards span.acc{background:#C1440E;opacity:.85}
-.ui-leads,.ui-estimate{background:#F1F3F0;padding:11px 12px 18px;font:600 8px Arial,sans-serif;color:#19382F}
-.ui-leads .minihead,.ui-estimate .minihead{font-size:12px;margin-bottom:8px}
-.ui-leads .ministats{display:flex;gap:5px;margin-bottom:7px}
-.ui-leads .ministats span{flex:1;background:#fff;border:1px solid #DBE2DC;border-radius:4px;padding:8px 5px;font-size:13px}
-.ui-leads .ministats small{display:block;color:#66766E;font-size:5px;margin-top:3px}
-.ui-leads .minirow{background:#fff;border:1px solid #DBE2DC;border-radius:4px;padding:6px 8px;margin-bottom:4px;display:flex;justify-content:space-between}
-.ui-leads .minirow b{color:#A45B3A}
-.ui-estimate .minigrid{display:grid;grid-template-columns:1.5fr .8fr;gap:6px}
-.ui-estimate .minilines,.ui-estimate .minitotal{background:#fff;border:1px solid #DBE2DC;border-radius:4px;padding:7px}
-.ui-estimate .minilines span{display:block;border-bottom:1px solid #E5E8E4;padding:5px 0}
-.ui-estimate .minilines span:last-child{border:0}
-.ui-estimate .minitotal strong{display:block;margin-top:24px;font-size:13px}
-.workbody{padding:20px 22px 22px;display:flex;flex-direction:column;gap:9px;flex:1}
-.workbody p{font-size:.95rem;line-height:1.7;color:var(--ink-mid)}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:12px}
-.chip{
-  font-family:var(--f-m);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
-  border:1px solid var(--line);padding:3px 8px;color:var(--ink-dim);
-}
-.chip.live{border-color:var(--accent);color:var(--accent)}
-
-/* ---------- pricing ---------- */
-.prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
-.price{background:var(--ground);padding:26px 24px;display:flex;flex-direction:column;gap:12px}
-.price.key{background:var(--surface);position:relative}
-.price.key::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--accent)}
-.price .step{font-family:var(--f-m);font-size:11px;letter-spacing:.14em;color:var(--ink-dim)}
-.price .amt{font-family:var(--f-d);font-weight:800;font-size:1.72rem;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.price .amt span{font-size:.9rem;font-family:var(--f-b);font-weight:500;color:var(--ink-mid)}
-.price p{font-size:.92rem;color:var(--ink-mid)}
-.small-task{margin-top:18px;border:1px solid var(--line);background:var(--surface);padding:27px 30px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
-.small-task h3{margin:5px 0 8px;font-size:1.26rem}
-.small-task p{margin:0;color:var(--ink-mid);font-size:.94rem;max-width:720px}
-.small-task .btn{white-space:nowrap}
-@media (max-width:700px){.small-task{grid-template-columns:1fr;padding:23px}.small-task .btn{justify-self:start}}
-
-/* ---------- about / cta ---------- */
-.two{display:grid;grid-template-columns:1fr 1fr;gap:44px}
-@media (max-width:820px){.two{grid-template-columns:1fr;gap:28px}}
-ul.pl{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:11px}
-ul.pl li{position:relative;padding-left:22px;color:var(--ink-mid);font-size:.97rem}
-ul.pl li::before{content:"";position:absolute;left:0;top:.62em;width:9px;height:2px;background:var(--accent)}
-ul.pl li b{color:var(--ink);font-weight:600}
-
-.final{background:var(--surface);border:1px solid var(--line);padding:44px 40px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px}
-.final h2{margin:0}
-.final p{color:var(--ink-mid);text-align:center}
-.contacts{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:6px}
-
-footer{padding:34px 0 60px}
-.footin{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;justify-content:space-between}
-
-/* ---------- reveal ---------- */
-.rv{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease}
-.rv.in{opacity:1;transform:none}
-@media (prefers-reduced-motion: reduce){
-  .rv{opacity:1;transform:none;transition:none}
-  .btn,.work{transition:none}
-  html{scroll-behavior:auto}
-}
-</style>
-</head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="index,follow">
+  <title>Fabrestra — сайты и автоматизация</title>
+  <meta name="description" content="Арсен Галустьян. Сайты, небольшие веб-инструменты, автоматизация процессов и ручная проверка приложений.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#24262b;--dark:#1c1e22;--ink:#e8e9e3;--muted:#babdc4;--red:#fc5a4b;--rule:#505359;--paper:#dfe1dc;--black:#24262b}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:30px}
+    body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 'IBM Plex Sans',sans-serif}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    a:focus-visible,button:focus-visible{outline:3px solid var(--red);outline-offset:5px}
+    .skip{position:absolute;left:20px;top:0;background:var(--paper);color:var(--black);padding:12px;transform:translateY(-110%);z-index:10}
+    .skip:focus{transform:none}
+    .wrap{width:min(1240px,100% - 80px);margin:auto}
+    .draft{background:var(--dark);border-bottom:1px solid var(--rule);color:var(--muted);font-size:12px;padding:8px 0}
+    .draft .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .draft a{text-decoration:underline;text-underline-offset:3px}
+    header{display:flex;justify-content:space-between;align-items:center;gap:24px;min-height:105px;border-bottom:4px solid var(--red)}
+    .brand{font:500 30px/1 'Oswald',sans-serif;letter-spacing:.07em}
+    .brand span{color:var(--red);font-size:19px;vertical-align:top;margin-left:6px}
+    .nav{display:flex;align-items:center;gap:30px;font-size:13px}
+    .nav a:hover,.text-link:hover{color:var(--red)}
+    .header-contact{border-bottom:1px solid var(--red);padding:10px 0;font-size:13px}
+    .hero{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;padding:76px 0 60px}
+    .eyebrow{color:var(--muted);font-size:12px;letter-spacing:.07em;text-transform:uppercase;margin:0 0 20px}
+    h1{font:500 clamp(58px,6.8vw,90px)/1.05 'Oswald',sans-serif;letter-spacing:-.025em;margin:0 0 27px}
+    h1 span{color:var(--red)}
+    .lead{font-size:17px;color:var(--muted);max-width:460px;margin:0 0 30px;line-height:1.7}
+    .actions{display:flex;align-items:center;gap:25px;flex-wrap:wrap}
+    .button{min-height:50px;display:inline-flex;align-items:center;justify-content:space-between;gap:26px;background:var(--red);color:var(--black);padding:14px 22px;font-size:14px;font-weight:500;border:0}
+    .button:hover{background:#ff786b}
+    .text-link{font-size:13px;border-bottom:1px solid var(--rule);padding:10px 0}
+    .hero-project{background:var(--paper);color:var(--black);border-top:12px solid var(--red);padding:22px;min-width:0}
+    .project-label{display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:11px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:22px}
+    .hero-project h2{font:500 34px/1.15 'Oswald',sans-serif;margin:0 0 18px}
+    .hero-image{background:#133a30;overflow:hidden;border:1px solid #aeb6b0}
+    .hero-image img{display:block;width:100%;height:275px;object-fit:cover;object-position:80% 48%}
+    .project-note{font-size:12px;margin:18px 0 17px;color:#4b5250}
+    .project-link{font-size:13px;display:flex;justify-content:space-between;border-top:1px solid #afb6b0;padding-top:15px;font-weight:500}
+    .project-link:hover{text-decoration:underline}
+    .service-strip{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);gap:20px;padding:20px 0;margin-bottom:78px;font-size:13px}
+    .service-strip span{color:var(--red);margin-right:15px;font-size:11px}
+    section{margin-bottom:84px}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:34px}
+    .section-number{display:block;font-size:11px;letter-spacing:.08em;color:var(--red);margin-bottom:13px}
+    .section-head h2{font:400 clamp(35px,4vw,49px)/1.15 'Oswald',sans-serif;letter-spacing:-.02em;margin:0}
+    .section-head>p{font-size:13px;max-width:340px;color:var(--muted);margin:0}
+    .works{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+    .work{border-top:1px solid var(--rule);padding-top:20px;min-width:0}
+    .work-visual{background:#eceee9;height:290px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:21px}
+    .work-visual img{width:100%;height:100%;object-fit:cover;object-position:left top}
+    .work h3{font:400 29px/1.2 'Oswald',sans-serif;margin:8px 0 13px}
+    .work p{font-size:14px;color:var(--muted);margin:0 0 18px;max-width:480px}
+    .tag{font-size:11px;letter-spacing:.03em;text-transform:uppercase;color:var(--red)}
+    .work-links{display:flex;gap:24px;flex-wrap:wrap}
+    .report-cover{height:100%;width:100%;padding:30px 35px;background:var(--red);color:var(--black);display:flex;flex-direction:column;justify-content:space-between}
+    .report-cover small{font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+    .report-cover strong{font:500 45px/1.06 'Oswald',sans-serif;letter-spacing:-.025em}
+    .report-lines{display:flex;gap:15px;flex-wrap:wrap;font-size:12px;border-top:1px solid #943a34;padding-top:16px}
+    .service-row{display:grid;grid-template-columns:50px 1fr 1.1fr;gap:30px;border-top:1px solid var(--rule);padding:27px 0}
+    .service-row:last-child{border-bottom:1px solid var(--rule)}
+    .row-number{color:var(--red);font-size:12px;padding-top:6px}
+    .service-row h3{font:400 30px/1.2 'Oswald',sans-serif;margin:0}
+    .service-row p{font-size:14px;color:var(--muted);margin:0}
+    .formats{display:flex;flex-wrap:wrap;gap:10px;margin-top:25px}
+    .formats span{font-size:12px;border:1px solid var(--rule);padding:8px 13px}
+    .process{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+    .process article{border-top:3px solid var(--red);padding-top:19px}
+    .process small{font-size:11px;color:var(--muted)}
+    .process h3{font:400 26px/1.25 'Oswald',sans-serif;margin:13px 0}
+    .process p{font-size:14px;color:var(--muted);margin:0}
+    .about{display:grid;grid-template-columns:1fr 1.2fr;gap:45px;background:var(--dark);padding:35px}
+    .about h2{font:400 38px/1.15 'Oswald',sans-serif;margin:10px 0 0}
+    .about p{font-size:15px;color:var(--muted);margin:0}
+    .contact{background:var(--red);color:var(--black);padding:43px;display:grid;grid-template-columns:1.2fr 1fr;gap:50px;align-items:center;margin-bottom:0}
+    .contact .section-number{color:var(--black)}
+    .contact h2{font:500 clamp(38px,5vw,62px)/1.08 'Oswald',sans-serif;margin:0}
+    .contact p{font-size:14px;margin:0 0 20px}
+    .contact .button{background:var(--black);color:var(--ink)}
+    footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:28px 0;color:var(--muted);font-size:12px}
+    footer a{text-decoration:underline;text-underline-offset:4px}
+    @media(min-width:1300px){.hero-image img{height:320px}}
+    @media(max-width:950px){.wrap{width:calc(100% - 48px)}.nav{gap:18px}.hero{gap:30px;padding:55px 0}.hero-image img{height:240px}.hero-project h2{font-size:29px}h1{font-size:66px}.section-head>p{max-width:270px}.service-row{grid-template-columns:35px 1fr 1.15fr;gap:20px}.contact{padding:32px;gap:30px}.work-visual{height:240px}.about{padding:28px}}
+    @media(max-width:700px){header{min-height:90px}.nav{display:none}.hero{grid-template-columns:1fr;padding:40px 0;gap:34px}h1{font-size:clamp(53px,12vw,77px)}.hero-project{padding:22px}.hero-image img{height:auto;aspect-ratio:1.75;object-position:center}.lead{max-width:540px}.service-strip{grid-template-columns:1fr;gap:14px;margin-bottom:54px}.section-head{align-items:start;flex-direction:column;gap:18px}.section-head>p{max-width:500px}.works{grid-template-columns:1fr;gap:36px}.work-visual{height:auto;aspect-ratio:1.8}.report-cover{min-height:250px}.service-row{grid-template-columns:30px 1fr;gap:12px 18px}.service-row p{grid-column:2}.process{grid-template-columns:1fr;gap:26px}.about,.contact{grid-template-columns:1fr;gap:25px}.contact{padding:28px}.about{padding:26px}section{margin-bottom:56px}}
+    @media(max-width:400px){.wrap{width:calc(100% - 36px)}.brand{font-size:26px}.header-contact{font-size:12px}.hero{padding-top:32px}h1{font-size:57px}.lead{font-size:15px}.eyebrow{font-size:11px}.hero-project{padding:17px}.hero-project h2{font-size:27px}.hero-image img{aspect-ratio:1.5}.actions{gap:14px}.report-cover{padding:25px;min-height:240px}.report-cover strong{font-size:38px}.contact{padding:24px}.contact h2{font-size:43px}.draft .wrap{gap:4px;font-size:11px}.section-head h2{font-size:37px}.service-row h3{font-size:27px}}
+    .hero-project{position:relative;background:linear-gradient(135deg,#eef0e9 0%,var(--paper) 62%,#c8cdc8 100%);box-shadow:0 24px 65px #0003,inset 0 1px #fff9}
+    .button{background:linear-gradient(135deg,#ff8272 0%,var(--red) 45%,#ed4c40 100%);box-shadow:inset 0 1px #ffc0b499,0 5px 16px #0002}
+    .cassette{--lift:0px;--shine:0%;--paper-shift:0px;position:relative;isolation:isolate;height:355px;margin:0 -8px;perspective:1000px}
+    .cassette-shell{position:absolute;inset:50px 0 14px;border:1px solid #74777d;border-radius:15px;background:linear-gradient(145deg,#575b63 0%,#22252a 25%,#0e1013 72%,#383c44 100%);box-shadow:0 20px 27px #12141755,inset 0 2px 2px #ffffff59,inset 0 -2px 3px #000;overflow:hidden}
+    .cassette-shell:before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 25%,#fff1 35%,transparent 45%);pointer-events:none}
+    .cassette-top{position:absolute;left:19px;right:19px;top:69px;height:10px;background:#050607;border:1px solid #08090a;border-radius:5px;box-shadow:0 1px #ffffff38,0 -2px 4px #000}
+    .cassette-screen{display:block;position:absolute;z-index:2;inset:8px 24px auto;transform:translateY(calc(20px - var(--lift))) rotateX(5deg);transform-origin:50% 100%;border:5px solid #33373d;border-top-width:18px;border-radius:7px;background:#12392e;box-shadow:0 12px 24px #0005,0 0 0 1px #9ba3a8,inset 0 1px #fff5;overflow:hidden}
+    .cassette-screen:before{content:"";position:absolute;z-index:2;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 20%,#ffffff29 36%,transparent 52%);transform:translateX(var(--shine))}
+    .cassette-screen:after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 1px #fff4}
+    .cassette-screen img{display:block;width:100%;height:220px;object-fit:cover;object-position:80% 48%}
+    .cassette-front{position:absolute;z-index:3;left:0;right:0;bottom:14px;height:90px;padding:18px 20px;border:1px solid #787d85;border-top:2px solid #ffb1a3;border-radius:0 0 14px 14px;background:linear-gradient(130deg,#ff9a80 0%,var(--red) 35%,#d13e33 100%);box-shadow:0 -4px 10px #0006,inset 0 -2px 3px #852219;display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+    .cassette-mark{font:500 21px/1 'Oswald',sans-serif;letter-spacing:.08em;color:#3b1c1a}
+    .cassette-caption{display:block;font:400 10px/1.4 'IBM Plex Sans',sans-serif;letter-spacing:.07em;margin-top:8px}
+    .cassette-slot{position:absolute;bottom:20px;left:20px;width:44%;height:6px;border-radius:4px;background:#391d1c;box-shadow:0 1px #ffb4a277,inset 0 2px 2px #0007}
+    .cassette-status{font-size:10px;color:#3b1c1a;display:flex;align-items:center;gap:7px}
+    .cassette-status:before{content:"";width:6px;height:6px;border-radius:50%;background:#e8e9e3;box-shadow:0 0 6px #fff8}
+    .cassette-ticket{position:absolute;z-index:4;bottom:0;right:25px;width:108px;padding:12px 10px 9px;background:#f2f1e9;color:#393c40;box-shadow:0 5px 10px #0003;transform:translateY(var(--paper-shift)) rotate(-5deg);font-size:9px;line-height:1.5;border-bottom:2px dashed #9a9d9b}
+    .cassette-ticket strong{display:block;font-size:10px;letter-spacing:.06em;border-bottom:1px solid #b9bcb8;padding-bottom:4px;margin-bottom:4px}
+    .motion-note{font-size:10px;color:#636966;letter-spacing:.02em;margin:13px 0 0}
+    @media(max-width:950px){.cassette{height:330px}.cassette-screen{left:16px;right:16px}.cassette-screen img{height:195px}.cassette-front{padding-left:15px}.cassette-slot{left:15px}}
+    @media(max-width:700px){.cassette{height:350px;margin:0}.cassette-screen img{height:215px}.cassette-screen{left:22px;right:22px}}
+    @media(max-width:400px){.cassette{height:310px}.cassette-screen{left:13px;right:13px}.cassette-screen img{height:175px}.cassette-front{padding:16px 13px}.cassette-mark{font-size:19px}.cassette-ticket{width:92px;right:18px}.cassette-status{font-size:9px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cassette-screen,.cassette-ticket{transform:none}.cassette-screen:before{transform:none}}
+  </style>
+  <link rel="stylesheet" href="kinetic.css">
+  <link rel="stylesheet" href="finish.css?v=20261007g">
+  <script src="catalog.js?v=20261008b" defer></script>
+<script src="preview.js?v=20261007h" defer></script><link rel="canonical" href="https://fabrestra.com/"></head>
 <body>
-
-
-<nav>
-  <div class="navin">
-    <a class="mark" href="#top"><span class="glyph"></span>FABRESTRA</a>
-    <div class="navlinks">
-      <a href="#problem">Что убираю</a>
-      <a href="#process">Как работаю</a>
-      <a href="portfolio/">Портфолио</a>
-      <a href="#prices">Цены</a>
-    </div>
-    <a class="btn" href="#contact">Обсудить задачу <span class="arw">→</span></a>
-  </div>
-</nav>
-
-<div id="top"></div>
-
-<!-- HERO -->
-<div class="hero">
-  <div class="w herogrid">
-    <div>
-      <div class="mono">Сайты · Telegram-боты · автоматизация</div>
-      <h1>Понятный сайт. Рабочий бот.<br><em>Меньше ручной работы.</em></h1>
-      <p class="sub">Я Арсен. Собираю страницы, ботов и небольшие инструменты для заявок, документов и таблиц. До начала работы фиксируем, что вы получите, сколько это стоит и когда будет готово.</p>
-      <div class="cta">
-        <a class="btn" href="portfolio/">Посмотреть работы <span class="arw">→</span></a>
-        <a class="btn btn-ghost" href="#contact">Обсудить задачу</a>
+  <a class="skip" href="#main">К содержанию</a>
+  <div class="wrap">
+    <header><a href="#main" class="brand" aria-label="Fabrestra — к началу">FABRESTRA<span>↗</span></a><nav class="nav" aria-label="Основная навигация"><a href="portfolio.html">Портфолио</a><a href="services.html">Услуги</a><a href="#prices">Стоимость</a><a href="journal.html">Статьи</a><a href="contacts.html">Контакты</a></nav><a class="header-contact" href="contacts.html">Обсудить задачу ↗</a></header>
+    <main id="main">
+      <div class="hero">
+        <div><p class="eyebrow">Арсен Галустьян / цифровые проекты</p><h1>САЙТЫ.<br>ПРОЦЕССЫ.<br><span>ПОРЯДОК.</span></h1><p class="lead">Делаю сайты и небольшие веб-инструменты. Автоматизирую работу с документами и заявками. Проверяю приложения перед запуском.</p><div class="actions"><a class="button" href="#contact">Обсудить задачу <span aria-hidden="true">↗</span></a><a class="text-link" href="#works">Посмотреть работы ↓</a></div></div>
+        <article class="hero-project kinetic-project"><div class="project-label"><span>Механический этюд / Fabrestra</span><span>01—03</span></div><h2>Из задачи — в рабочую вещь.</h2>
+          <div class="workshop" id="workshop" data-scene="0" role="img" aria-label="Три сцены: разрозненные заявки, сборка интерфейса, рабочая панель учёта">
+            <div class="workshop-grid" aria-hidden="true"></div><div class="workshop-rail" aria-hidden="true"><span>FAB / СБОРОЧНЫЙ СТОЛ</span><i></i><i></i></div>
+            <div class="workshop-clamp" aria-hidden="true"><span>F</span></div>
+            <div class="scene scene-input" aria-hidden="true">
+              <div class="paper paper-back"><small>В ТАБЛИЦЕ</small><div class="paper-lines"></div><span class="paper-number">03</span></div>
+              <div class="paper paper-red"><small>В ЧАТЕ</small><strong>Ещё одна<br>заявка.</strong><span class="paper-number">02</span></div>
+              <div class="paper paper-front"><small>В ПОЧТЕ</small><strong>Где<br>мой заказ?</strong><div class="paper-lines"></div><span class="paper-number">01</span></div>
+            </div>
+            <div class="scene scene-build" aria-hidden="true">
+              <div class="build-frame"><span>СОБИРАЕМ СВЯЗИ</span><i></i><i></i><i></i></div>
+              <div class="module module-form"><small>01 / ВХОД</small><strong>Заявка</strong><i></i><i></i><b>Принять ↗</b></div>
+              <div class="module module-queue"><small>02 / УЧЁТ</small><strong>Очередь</strong><span>Новая <i></i></span><span>В работе <i></i></span></div>
+              <div class="module module-status"><small>03 / ВЫХОД</small><strong>Понятный<br>следующий шаг.</strong><b>✓</b></div>
+            </div>
+            <div class="scene scene-ready" aria-hidden="true">
+              <div class="ready-screen"><div class="ready-bar"><span>FAB / REPAIR CONSOLE</span><span>● ДЕМО</span></div><img src="portfolio/repair-interface.png" alt="" width="1521" height="675" fetchpriority="high"><div class="ready-caption">Не картинка. Можно открыть и попробовать. ↗</div></div>
+              <div class="ready-stamp">СОБРАНО<span>И ПРОВЕРЕНО</span></div>
+            </div>
+            <div class="workshop-floor" aria-hidden="true"><span>FABRESTRA</span><div class="floor-roller"></div><i>ЦИФРОВАЯ МАСТЕРСКАЯ</i></div>
+          </div>
+          <div class="scene-controls" role="group" aria-label="Переключить сцену механического этюда"><button type="button" data-show-scene="0" aria-pressed="true"><span>01</span> Задача</button><button type="button" data-show-scene="1" aria-pressed="false"><span>02</span> Сборка</button><button type="button" data-show-scene="2" aria-pressed="false"><span>03</span> Результат</button></div>
+          <p class="scene-caption" id="scene-caption" aria-live="polite">Разрозненные заявки. Сначала выясняем, что должно работать.</p>
+          <p class="motion-note">Три сцены: нажми на этап или прокрути страницу. Без автоматического повтора.</p><a class="project-link" href="demos/repair-console/"><span>Открыть панель ремонтов — собственное демо</span><span aria-hidden="true">↗</span></a></article>
       </div>
-    </div>
-    <div class="stage">
-      <canvas id="belt" aria-label="Схема: заявки в ручной обработке скапливаются у узкого места, в автоматизированной проходят без задержки"></canvas>
-      <div class="stagecap">
-        <span class="mono" id="capA">Вручную · в очереди 0</span>
-        <span class="mono" id="capB">С Fabrestra · обработано 0</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- BAND -->
-<div class="band">
-  <div class="w"><div class="bandgrid">
-    <div class="bcell">
-      <div class="big"><span class="cnt" data-to="3">3</span><small>дня</small></div>
-      <div class="cap">ориентир для одного согласованного скрипта Word из Excel</div>
-    </div>
-    <div class="bcell">
-      <div class="big"><span class="cnt" data-to="5">5</span><small>проектов</small></div>
-      <div class="cap">в отдельном портфолио: задача, решение, пример и границы</div>
-    </div>
-    <div class="bcell">
-      <div class="big"><span class="cnt" data-to="1">0</span><small>процесс за раз</small></div>
-      <div class="cap">согласованный результат, одна понятная сумма и срок</div>
-    </div>
-  </div></div>
-</div>
-
-<!-- PROBLEM -->
-<section id="problem">
-  <div class="w">
-    <div class="shead rv">
-      <div class="mono">01 — Диагноз</div>
-      <h2>Три места, где бизнес каждый день теряет деньги руками</h2>
-      <p>Это не про «внедрить ИИ». Это про конкретные операции, которые сотрудник повторяет по десять раз в день и на которые уходит рабочая неделя в месяц.</p>
-    </div>
-    <div class="hazard rv" aria-hidden="true"></div>
-    <div class="cols3 rv">
-      <div class="cell">
-        <span class="n">01</span>
-        <h3>Заявки обрабатываются вручную</h3>
-        <p>Менеджер копирует данные из формы в CRM, пишет первый ответ, ставит напоминание. Ошибается, забывает, уходит в отпуск. Половина заявок остывает раньше, чем до них доходят руки.</p>
-      </div>
-      <div class="cell">
-        <span class="n">02</span>
-        <h3>Отчёты собираются по кускам</h3>
-        <p>Выгрузка из одной системы, сведение в таблице, пересылка в чат. Каждую неделю одно и то же, по три-четыре часа. К моменту готовности цифры уже неактуальны.</p>
-      </div>
-      <div class="cell">
-        <span class="n">03</span>
-        <h3>Клиента ведут вручную до самого конца</h3>
-        <p>Напоминания, догрев, повторное касание, запрос отзыва. Всё держится на памяти конкретного человека — и рассыпается, как только он занят.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section id="process">
-  <div class="w">
-    <div class="shead rv">
-      <div class="mono">02 — Как это устроено</div>
-      <h2>От задачи до проверенного результата</h2>
-      <p>Вы видите состав работ и промежуточный пример. Срок зависит от объёма и доступов, а не от единого обещания для любого проекта.</p>
-    </div>
-    <div class="proc" id="proc">
-      <div class="procfill" id="procfill"></div>
-      <div class="prow"><div class="day">01</div><div class="txt"><h3>Уточнить и согласовать</h3><p>Смотрю пример и материалы. Письменно фиксируем объём, результат, цену и срок. Для небольшой задачи не нужны отдельные платные этапы.</p></div></div>
-      <div class="prow"><div class="day">02</div><div class="txt"><h3>Собрать и показать</h3><p>Готовлю страницу, сценарий бота или скрипт. Показываю промежуточный результат, чтобы сверить направление до завершения.</p></div></div>
-      <div class="prow"><div class="day">03</div><div class="txt"><h3>Проверить</h3><p>Сверяем согласованные сценарии: корректные данные, пустые поля, повторные действия. Для сайта — также мобильную версию и ссылки.</p></div></div>
-      <div class="prow"><div class="day">04</div><div class="txt"><h3>Передать</h3><p>Отдаю результат, исходники и короткую инструкцию. Если нужен замер экономии или последующая поддержка, заранее согласуем условия и способ проверки.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- WORKS -->
-<section id="works">
-  <div class="w">
-    <div class="shead rv">
-      <div class="mono">03 — Работы</div>
-      <h2>Работы, которые можно открыть</h2>
-      <p>Собственные проекты и демонстрации: каталог, Telegram-бот, лендинг и рабочие инструменты. Откройте пример, попробуйте сценарий и посмотрите состав реализации.</p>
-    </div>
-    <div class="works rv">
-
-      <a class="work" href="portfolio/case.html?id=diority">
-        <div class="workshot"><div class="frame"><div class="bar"><i></i><i></i><i></i><u></u></div>
-          <img src="brand/shots/diority.jpg" alt="Главная страница Diority: пополнение и подписки, калькулятор суммы" loading="lazy" width="760" height="380">
-        </div></div>
-        <div class="workbody">
-          <h3>Diority</h3>
-          <p>Собственный магазин цифровых товаров: каталог по категориям, карточки и калькулятор суммы перед оформлением. Посмотрите пользовательский путь от выбора сервиса до товара.</p>
-          <div class="chips"><span class="chip live">В проде</span><span class="chip">Каталог</span><span class="chip">Заказы</span></div>
-          <span class="openlink">Посмотреть кейс и сайт <span class="arw">→</span></span>
+      <div class="early-contact"><a href="mailto:arsen@fabrestra.com">arsen@fabrestra.com ↗</a><a href="contacts.html">Все контакты и профили ↗</a></div>
+      <div class="service-strip"><div><span>01</span>Сайты и доработки</div><div><span>02</span>Автоматизация процессов</div><div><span>03</span>Проверка приложений</div></div>
+      <nav class="metal-rail" aria-label="Быстрые переходы"><span class="rail-label">FAB / МАСТЕРСКАЯ</span><a href="portfolio.html"><small>01</small> Работы <span aria-hidden="true">↗</span></a><a href="#services"><small>02</small> Услуги <span aria-hidden="true">↓</span></a><a href="#prices"><small>03</small> Стоимость <span aria-hidden="true">↓</span></a></nav>
+      <section id="works" aria-labelledby="works-title"><div class="section-head"><div><span class="section-number">01 / РАБОТЫ И ДЕМОНСТРАЦИИ</span><h2 id="works-title">Можно открыть и посмотреть.</h2></div><p>Ниже — собственные демонстрации и образец результата. Их состав и возможности указаны рядом.</p></div><div class="works">
+        <article class="work"><a class="work-visual" href="zk/" aria-label="Открыть учебный сайт жилого комплекса"><img src="brand/shots/zk.jpg" alt="ЖК «Верхний сад»: первый экран учебного сайта" loading="lazy"></a><span class="tag">Сайт недвижимости / учебный проект</span><h3>ЖК «Верхний сад»</h3><p>Атмосфера места, планировки и сценарий подбора. Развёрнутый лендинг вымышленного жилого комплекса, без заявленных продаж и настоящего приёма заявок.</p><div class="work-links"><a class="text-link" href="zk/">Посмотреть сайт ↗</a><a class="text-link" href="case.html?id=landing">Разобрать работу ↗</a></div></article>
+        <article class="work"><a class="work-visual" href="case.html?id=diority" aria-label="Посмотреть собственный проект Diority"><img src="brand/shots/diority.jpg" alt="Сайт собственного проекта Diority" loading="lazy"></a><span class="tag">Сайт / собственный проект</span><h3>Diority</h3><p>Собственный магазин. Пример структуры и оформления товарного сайта, а не заказ стороннего клиента.</p><div class="work-links"><a class="text-link" href="case.html?id=diority">Посмотреть проект ↗</a></div></article>
+        <article class="work"><a class="work-visual" data-project-cover="nerv" href="demos/nerv/" aria-label="Открыть технический проект Нерв"><img src="assets/nerv-home.png" alt="Нерв: технический сайт с топологией запросов" loading="lazy"></a><span class="tag">Сайт + интерактивная консоль / учебный продукт</span><h3>Нерв</h3><p>Поднимите нагрузку, отключите узел и посмотрите, как растёт очередь. Затем восстановите систему. Отдельная техническая подача, без выдуманных метрик настоящего сервера.</p><div class="work-links"><a class="text-link" href="demos/nerv/console.html">Попробовать консоль ↗</a><a class="text-link" href="case.html?id=nerv">Разобрать работу ↗</a></div></article>
+      <p class="all-work-link"><a class="text-link" href="portfolio.html">Все работы: сайты, магазины, кабинеты и автоматизация ↗</a><a class="text-link" href="mini.html">Компактный просмотр ↗</a></p>
+      </div></section>
+      <section class="journal-preview" id="read"><div class="section-head"><div><span class="section-number">ЗАМЕТКИ О РАБОТЕ</span><h2>Не только красивые экраны.</h2></div><a class="text-link" href="journal.html">Все статьи ↗</a></div><div class="journal-cards"><a href="article-requests.html"><small>01 / ЗАЯВКИ</small><h3>Куда пропадают обращения</h3><span>Форма, очередь и следующий шаг ↗</span></a><a href="article-store.html"><small>02 / МАГАЗИН</small><h3>Каталог ещё не магазин</h3><span>Что проверить перед запуском ↗</span></a><a href="article-documents.html"><small>03 / ДОКУМЕНТЫ</small><h3>Реквизиты без перепечатки</h3><span>Как подготовить шаблон ↗</span></a></div></section><section id="services" aria-labelledby="services-title"><div class="section-head"><div><span class="section-number">02 / ЧЕМ МОГУ ПОМОЧЬ</span><h2 id="services-title">Задача определяет инструмент.</h2></div><p>Можно начать с одной доработки. Объём, стоимость и срок согласуем по конкретному заданию.</p></div>
+        <article class="service-row"><span class="row-number">01</span><h3>Сайты и веб-инструменты</h3><p>Страница услуги, сайт-визитка, калькулятор или небольшой кабинет. Структура, интерфейс, адаптивная вёрстка и проверка основного сценария.</p></article>
+        <article class="service-row"><span class="row-number">02</span><h3>Один рабочий процесс</h3><p>Формирование документов из таблицы, учёт обращений или обработка повторяющихся данных. Сначала определяем входные данные и нужный результат.</p></article>
+        <article class="service-row"><span class="row-number">03</span><h3>Ручное тестирование</h3><p>Проверка согласованных пользовательских сценариев на сайте или в приложении. Отчёт с шагами воспроизведения, ожидаемым и фактическим результатом.</p></article>
+        <div class="formats" aria-label="Форматы работы"><span>Отдельная доработка</span><span>Один процесс</span><span>Небольшой MVP</span></div>
+      </section>
+      <section id="prices" aria-labelledby="prices-title"><div class="section-head"><div><span class="section-number">03 / СТОИМОСТЬ</span><h2 id="prices-title">Понятный объём. Понятная цена.</h2></div><p>Цены для описанного ниже состава работ. Если задача отличается, сначала уточним объём и согласуем смету.</p></div>
+        <div class="price-grid">
+          <article class="price-card"><span class="price-index">01 / ДОКУМЕНТЫ</span><h3>Word из Excel</h3><div class="price-value">3 000 ₽ <span>3 дня</span></div><p>Один шаблон DOCX, одна таблица XLSX, до 20 полей. Документ для каждой строки, проверка полей, журнал и инструкция.</p><details><summary>Границы задачи</summary><p>Без распознавания сканов, AutoCAD, сложных повторяющихся таблиц и сборки PDF.</p></details><a href="https://t.me/fabrestra" class="price-link">Обсудить документы <span aria-hidden="true">↗</span></a></article>
+          <article class="price-card price-featured"><span class="price-index">02 / САЙТ</span><h3>Страница услуги</h3><div class="price-value">10 000 ₽ <span>5 дней</span></div><p>Одна адаптивная страница до 6 блоков. Готовые тексты и изображения, контакты, размещение на твоём хостинге.</p><details><summary>Границы задачи</summary><p>Без интернет-магазина, приёма оплаты и личного кабинета. Материалы предоставляет заказчик.</p></details><a href="https://t.me/fabrestra" class="price-link">Обсудить страницу <span aria-hidden="true">↗</span></a></article>
+          <article class="price-card"><span class="price-index">03 / ЗАЯВКИ</span><h3>Бот для заявок</h3><div class="price-value">8 000 ₽ <span>4 дня</span></div><p>Одна анкета до 10 вопросов. Уведомление одному получателю, сохранение и выгрузка заявок. Согласованный сервер.</p><details><summary>Границы задачи</summary><p>Без оплаты, интеграции с CRM и искусственного интеллекта. Сервер и платные сервисы отдельно.</p></details><a href="https://t.me/fabrestra" class="price-link">Обсудить бота <span aria-hidden="true">↗</span></a></article>
+          <article class="price-card"><span class="price-index">04 / ИНТЕГРАЦИЯ</span><h3>Выдача после оплаты</h3><div class="price-value">15 000 ₽ <span>6 дней</span></div><p>Один сайт Tilda, ЮKassa и UniSender. Ссылки до 100 товаров в письме после проверки оплаты, защита от дублей и тесты.</p><details><summary>Границы задачи</summary><p>Без новой системы уникальных ключей и одноразовых ссылок. Перед началом проверяем доступы и возможности сервисов.</p></details><a href="https://t.me/fabrestra" class="price-link">Обсудить выдачу <span aria-hidden="true">↗</span></a></article>
         </div>
-      </a>
-
-      <a class="work" href="https://t.me/weakspot_bot" target="_blank" rel="noopener">
-        <div class="workshot"><div class="frame"><div class="bar"><i></i><i></i><i></i><u></u></div>
-          <img src="brand/shots/bot.jpg" alt="Переписка с ботом: вопрос 4 из 10 и три варианта ответа" loading="lazy" width="760" height="380">
-        </div></div>
-        <div class="workbody">
-          <h3>Бот с подсчётом по шкалам</h3>
-          <p>Десять вопросов, результат считается по четырём шкалам. Каждое прохождение пишется в базу, владелец выгружает всё одной командой в таблицу. Вопросы вынесены отдельным файлом, чтобы менять их без разработчика.</p>
-          <div class="chips"><span class="chip live">Работает</span><span class="chip">Telegram</span><span class="chip">Аналитика</span><span class="chip">VPS</span></div>
-          <span class="openlink">Пройти тест <span class="arw">→</span></span>
-        </div>
-      </a>
-
-      <a class="work" href="portfolio/case.html?id=landing">
-        <div class="workshot"><div class="frame"><div class="bar"><i></i><i></i><i></i><u></u></div>
-          <img src="brand/shots/zk.jpg" alt="Лендинг ЖК «Верхний сад»: первый экран с видом на комплекс" loading="lazy" width="760" height="380">
-        </div></div>
-        <div class="workbody">
-          <h3>ЖК «Верхний сад»</h3>
-          <p>Демонстрационный лендинг вымышленного жилого комплекса: планировки, этапы строительства и интерактивный пример подбора. Адаптивная страница в одном HTML-файле, без сбора персональных данных.</p>
-          <div class="chips"><span class="chip">Концепт</span><span class="chip">Адаптивная вёрстка</span><span class="chip">Демо подбора</span></div>
-          <span class="openlink">Открыть лендинг <span class="arw">→</span></span>
-        </div>
-      </a>
-
-      <a class="work" href="portfolio/case.html?id=leads">
-        <div class="workshot"><div class="frame"><div class="bar"><i></i><i></i><i></i><u></u></div>
-          <div class="ui-leads" aria-hidden="true"><div class="minihead">Пульт обращений</div><div class="ministats"><span>5<small>Всего</small></span><span>2<small>В работе</small></span><span>1<small>Просрочено</small></span></div><div class="minirow">Мастерская «Север» <b>Сегодня</b></div><div class="minirow">Студия «Линия» <b>Завтра</b></div></div>
-        </div></div>
-        <div class="workbody">
-          <h3>Пульт обращений</h3>
-          <p>Интерактивный прототип для контроля входящих: обращение, ответственный, следующий шаг, срок и статус. Можно добавить запись, найти просроченное и выгрузить CSV. Данные остаются в браузере — это демонстрация процесса, не готовая многопользовательская CRM.</p>
-          <div class="chips"><span class="chip">Демо</span><span class="chip">Учёт заявок</span><span class="chip">CSV</span></div>
-          <span class="openlink">Попробовать демо <span class="arw">→</span></span>
-        </div>
-      </a>
-
-      <a class="work" href="portfolio/case.html?id=estimate">
-        <div class="workshot"><div class="frame"><div class="bar"><i></i><i></i><i></i><u></u></div>
-          <img src="portfolio/estimate-interface.png" alt="Работающий калькулятор сметы: позиции и итог со скидкой" loading="lazy">
-        </div></div>
-        <div class="workbody">
-          <h3>Смета за минуту</h3>
-          <p>Рабочий прототип коммерческого предложения: состав работ, количество, цена и скидка пересчитываются сразу. Результат можно распечатать или сохранить как PDF. Условия и позиции адаптируются под конкретную компанию.</p>
-          <div class="chips"><span class="chip">Демо</span><span class="chip">Сметы</span><span class="chip">PDF</span></div>
-          <span class="openlink">Собрать смету <span class="arw">→</span></span>
-        </div>
-      </a>
-
-    </div>
-    <p style="margin-top:24px"><a class="btn btn-ghost" href="portfolio/">Все кейсы: задача, решение и демо <span class="arw">→</span></a></p>
+        <div class="price-notes"><p>Сроки в календарных днях после получения материалов и доступов, с согласованной даты старта. Включён один раунд правок в рамках задания. Домен, хостинг и платные сервисы оплачиваются отдельно, по предварительному согласованию.</p><p><strong>Тестирование, отдельные доработки и MVP:</strong> стоимость после описания сценариев или задачи. <a class="text-link" href="#contact">Уточнить объём ↗</a></p></div>
+      </section>
+      <section id="process" aria-labelledby="process-title"><div class="section-head"><div><span class="section-number">04 / ПОРЯДОК РАБОТЫ</span><h2 id="process-title">От задачи до передачи.</h2></div></div><div class="process"><article><small>01 / УТОЧНЯЕМ</small><h3>Что должно получиться</h3><p>Ты показываешь задачу и исходные материалы. Фиксируем состав работы, ограничения, срок и стоимость.</p></article><article><small>02 / ДЕЛАЕМ И ПРОВЕРЯЕМ</small><h3>Рабочий вариант</h3><p>Собираю решение, показываю промежуточный результат и проверяю согласованный сценарий.</p></article><article><small>03 / ПЕРЕДАЁМ</small><h3>Результат и инструкция</h3><p>Передаю согласованные файлы или доступ, объясняю использование. Дальнейшие доработки обсуждаем отдельно.</p></article></div></section>
+      <section class="about" id="about" aria-labelledby="about-title"><div><span class="section-number">05 / ОБ АВТОРЕ</span><h2 id="about-title">Я Арсен.<br>Fabrestra — мои работы.</h2></div><div><p>Со мной можно начать с обычного сообщения: что сейчас приходится делать вручную, какой сайт нужен или где теряются заявки. Не обязательно заранее писать техническое задание.</p><p style="margin-top:16px">Сначала разберём один конкретный сценарий и договоримся, как проверить результат. На сайте можно попробовать мои примеры руками. Учебные работы отделены от настоящих проектов, а ограничения указаны в каждом кейсе.</p><a class="text-link" href="contacts.html" style="display:inline-block;margin-top:16px">Написать мне или посмотреть профили ↗</a></div></section>
+      <section class="contact" id="contact" aria-labelledby="contact-title"><div><span class="section-number">06 / НАЧНЁМ С ЗАДАЧИ</span><h2 id="contact-title">Что нужно<br>сделать?</h2></div><div><p>Напиши, что сейчас не работает или отнимает время. Приложи ссылку, пример или короткое описание желаемого результата.</p><a class="button" href="https://t.me/fabrestra" target="_blank" rel="noopener noreferrer">Написать в Telegram <span aria-hidden="true">↗</span></a></div></section>
+    </main>
+    <footer class="contact-links"><span>FABRESTRA / Арсен Галустьян</span><a href="https://t.me/fabrestra">Telegram ↗</a><a href="mailto:arsen@fabrestra.com">arsen@fabrestra.com ↗</a><a href="https://www.fl.ru/users/agentoriawork/portfolio/">FL.ru ↗</a><a href="https://workspace.ru/id/arsen-galustyan/">Workspace ↗</a><a href="contacts.html">Контакты и профили ↗</a><a href="journal.html">Статьи ↗</a><a href="portfolio.html">Все работы ↗</a></footer>
   </div>
-</section>
-
-<!-- PRICES -->
-<section id="prices">
-  <div class="w">
-    <div class="shead rv">
-      <div class="mono">04 — Цены</div>
-      <h2>Открытым текстом, до разговора</h2>
-      <p>Пакеты для конкретных небольших задач. Это один заказ, а не обязательная лестница этапов. Перед стартом проверяем, что ваши материалы входят в указанный объём.</p>
-    </div>
-    <div class="prices rv">
-      <div class="price">
-        <span class="step">Документы</span>
-        <h3>Word из Excel</h3>
-        <div class="amt">3 000 ₽ <span> / 3 дня</span></div>
-        <p>Один DOCX-шаблон, одна XLSX-таблица, до 20 полей. Документ на каждую строку, проверка полей, журнал и инструкция. Без OCR, AutoCAD, сложных повторяющихся таблиц и PDF-сборки.</p>
-      </div>
-      <div class="price key">
-        <span class="step">Сайт</span>
-        <h3>Страница услуги</h3>
-        <div class="amt">10 000 ₽ <span> / 5 дней</span></div>
-        <p>Одна адаптивная страница до 6 блоков по готовым текстам и изображениям, контакты и размещение на вашем хостинге. Без магазина, оплаты и личного кабинета.</p>
-      </div>
-      <div class="price">
-        <span class="step">Telegram</span>
-        <h3>Бот для заявок</h3>
-        <div class="amt">8 000 ₽ <span> / 4 дня</span></div>
-        <p>Одна анкета до 10 вопросов, уведомление одному получателю, сохранение и выгрузка данных. Без оплат, CRM и AI. Развёртывание на согласованном сервере.</p>
-      </div>
-      <div class="price">
-        <span class="step">Интеграция</span>
-        <h3>Выдача после оплаты</h3>
-        <div class="amt">15 000 ₽ <span> / 6 дней</span></div>
-        <p>Один сайт Tilda, ЮKassa и UniSender: ссылки на до 100 товаров в одном письме после проверки оплаты, защита от повторов и тесты. Без новой системы уникальных ключей и одноразовых ссылок.</p>
-      </div>
-    </div>
-    <p style="margin-top:18px;color:var(--ink-mid);font-size:.9rem">Сроки — календарные дни после материалов, доступов и согласования старта. В каждый пакет входит один раунд исправлений по исходной задаче. Хостинг, домен и платные сервисы оплачиваются отдельно; их необходимость согласуем заранее.</p>
-    <div class="small-task rv">
-      <div>
-        <div class="mono">Отдельно от больших проектов</div>
-        <h3>Есть одна конкретная задача?</h3>
-        <p>Возьмусь и за ограниченную работу: поправить существующий сайт или бот, собрать форму с выгрузкой в таблицу, сделать небольшой внутренний инструмент. Сначала согласуем, что именно должно работать и как это проверим; срок и цену назову после короткого ТЗ. Полноценную CRM не буду выдавать за такую задачу.</p>
-      </div>
-      <a class="btn" href="#contact">Показать задачу <span class="arw">→</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="w two">
-    <div class="rv">
-      <div class="mono">05 — Кто делает</div>
-      <h2>Один человек и очень быстрый процесс</h2>
-      <p style="color:var(--ink-mid)">Я Арсен Галустьян, разработчик Fabrestra. Собираю сайты, ботов и инструменты автоматизации. Вы обсуждаете задачу напрямую со мной: от первого примера до передачи исходников и инструкции.</p>
-    </div>
-    <div class="rv">
-      <ul class="pl">
-        <li><b>Инструмент под задачу.</b> Использую код, готовые сервисы и ИИ там, где они помогают получить результат. Сложность проекта и необходимые проверки не исчезают из-за использования ИИ.</li>
-        <li><b>Один процесс за раз.</b> Никаких «комплексных трансформаций». Автоматизируем то, что болит сильнее всего, замеряем, и только потом решаем про следующее.</li>
-        <li><b>Проверка вместо общих обещаний.</b> До старта определяем, что должно работать. Экономию времени измеряем, если согласован исходный процесс и есть данные для сравнения.</li>
-        <li><b>Отказываюсь, когда не подхожу.</b> Если процесс дешевле оставить ручным, я скажу это на разборе, а не после оплаты.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section id="contact" style="border-bottom:none">
-  <div class="w">
-    <div class="final rv">
-      <div class="mono">Следующий шаг</div>
-      <h2>Начнём с описания вашей задачи</h2>
-      <p>Пришлите ссылку, пример или короткое описание. Предложу состав результата, стоимость и срок. Можно обсудить в переписке; созвон не обязателен.</p>
-      <div class="contacts">
-        <a class="btn" href="https://t.me/fabrestra">Написать в Telegram <span class="arw">→</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="w footin">
-    <span class="mono">Fabrestra — сайты, боты и автоматизация</span>
-    <span class="mono">fabrestra.com</span>
-  </div>
-</footer>
-
-<script>
-(function(){
-  "use strict";
-  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  function css(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
-
-  /* ---------- reveal ---------- */
-  var rvs = document.querySelectorAll(".rv");
-  if (reduce || !("IntersectionObserver" in window)) {
-    rvs.forEach(function(e){ e.classList.add("in"); });
-  } else {
-    var ro = new IntersectionObserver(function(en){
-      en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add("in"); ro.unobserve(x.target); } });
-    }, {threshold:.12});
-    rvs.forEach(function(e){ ro.observe(e); });
-  }
-
-  /* ---------- count up ---------- */
-  var cnts = document.querySelectorAll(".cnt");
-  function runCount(el){
-    var to = parseInt(el.dataset.to,10), t0 = null, dur = 900;
-    if (reduce){ el.textContent = to; return; }
-    function step(t){
-      if(!t0) t0 = t;
-      var p = Math.min((t-t0)/dur,1);
-      el.textContent = Math.round(to * (1 - Math.pow(1-p,3)));
-      if(p<1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  if(!("IntersectionObserver" in window)){ cnts.forEach(runCount); }
-  else {
-    var co = new IntersectionObserver(function(en){
-      en.forEach(function(x){ if(x.isIntersecting){ runCount(x.target); co.unobserve(x.target); } });
-    },{threshold:.5});
-    cnts.forEach(function(e){ co.observe(e); });
-  }
-
-  /* ---------- process progress ---------- */
-  var proc = document.getElementById("proc"),
-      fill = document.getElementById("procfill"),
-      rows = proc ? proc.querySelectorAll(".prow") : [];
-  function onScroll(){
-    if(!proc) return;
-    var r = proc.getBoundingClientRect(), vh = window.innerHeight;
-    var p = (vh*0.72 - r.top) / r.height;
-    p = Math.max(0, Math.min(1, p));
-    fill.style.height = (p*100) + "%";
-    rows.forEach(function(row,i){
-      row.classList.toggle("on", p >= (i+0.35)/rows.length);
-    });
-  }
-  if(reduce){ if(fill){ fill.style.height="100%"; } rows.forEach(function(r){r.classList.add("on");}); }
-  else { window.addEventListener("scroll", onScroll, {passive:true}); window.addEventListener("resize", onScroll); onScroll(); }
-
-  /* ---------- hero conveyor ---------- */
-  var cv = document.getElementById("belt");
-  if(cv){
-    var ctx = cv.getContext("2d"), W=0, H=0, dpr=1;
-    var capA = document.getElementById("capA"), capB = document.getElementById("capB");
-    var manual = [], auto = [], queued = 0, done = 0, tAcc = 0, last = 0;
-
-    function size(){
-      dpr = Math.min(window.devicePixelRatio||1, 2);
-      W = cv.clientWidth; H = cv.clientHeight;
-      cv.width = W*dpr; cv.height = H*dpr;
-      ctx.setTransform(dpr,0,0,dpr,0,0);
-    }
-
-    function spawn(){
-      manual.push({x:-14, s:0.9+Math.random()*0.3, stuck:false, passed:false, age:0});
-      auto.push({x:-14, s:1.7+Math.random()*0.35});
-    }
-
-    function draw(){
-      var ink=css("--ink"), mid=css("--ink-dim"), line=css("--line"),
-          acc=css("--accent"), sig=css("--signal"), steel=css("--steel"), surf=css("--surface-2");
-      ctx.clearRect(0,0,W,H);
-
-      var yA = H*0.31, yB = H*0.73, gate = W*0.66, pad = 14, sz = 13;
-
-      ctx.font = '500 11px "IBM Plex Mono", monospace';
-      ctx.textBaseline = "alphabetic";
-
-      /* lane beds */
-      ctx.fillStyle = surf; ctx.globalAlpha = .7;
-      ctx.fillRect(pad, yA-9, W-pad*2, sz+18);
-      ctx.fillRect(pad, yB-9, W-pad*2, sz+18);
-      ctx.globalAlpha = 1;
-
-      /* lane A */
-      ctx.fillStyle = mid;
-      ctx.fillText("ВРУЧНУЮ", pad, yA-20);
-      ctx.strokeStyle = line; ctx.lineWidth = 1;
-      ctx.beginPath(); ctx.moveTo(pad, yA+sz+8.5); ctx.lineTo(W-pad, yA+sz+8.5); ctx.stroke();
-
-      /* bottleneck marker */
-      ctx.save();
-      ctx.setLineDash([3,3]); ctx.strokeStyle = sig; ctx.lineWidth = 1.5;
-      ctx.beginPath(); ctx.moveTo(gate, yA-9); ctx.lineTo(gate, yA+sz+9); ctx.stroke();
-      ctx.restore();
-      ctx.fillStyle = sig;
-      ctx.fillText("узкое место", gate+7, yA-20);
-
-      /* lane B */
-      ctx.fillStyle = mid;
-      ctx.fillText("С FABRESTRA", pad, yB-20);
-      ctx.strokeStyle = line;
-      ctx.beginPath(); ctx.moveTo(pad, yB+sz+8.5); ctx.lineTo(W-pad, yB+sz+8.5); ctx.stroke();
-
-      /* items A */
-      manual.forEach(function(m){
-        if(m.x < -sz || m.x > W) return;
-        ctx.fillStyle = m.stuck ? sig : steel;
-        ctx.globalAlpha = m.stuck ? Math.min(1, .5 + m.age/120) : .8;
-        ctx.fillRect(m.x, yA, sz, sz);
-        ctx.globalAlpha = 1;
-      });
-      /* items B */
-      auto.forEach(function(a){
-        if(a.x < -sz || a.x > W) return;
-        ctx.fillStyle = acc; ctx.globalAlpha = .88;
-        ctx.fillRect(a.x, yB, sz, sz);
-        ctx.globalAlpha = 1;
-      });
-
-      /* exit marks */
-      ctx.fillStyle = line;
-      ctx.fillRect(W-pad-2, yA-9, 2, sz+18);
-      ctx.fillRect(W-pad-2, yB-9, 2, sz+18);
-    }
-
-    function step(t){
-      if(!last) last = t;
-      var dt = Math.min((t-last), 50); last = t;
-      tAcc += dt;
-      if(tAcc > 400){ tAcc = 0; spawn(); }
-
-      var gate = W*0.66, sz = 13, gap = 4;
-      /* manual: queue behind the gate, released one at a time */
-      manual.sort(function(a,b){ return b.x - a.x; });
-      var ahead = null;
-      manual.forEach(function(m){
-        var target = m.x + m.s * dt/16;
-        var limit = m.passed ? Infinity : gate - sz - 1;
-        if(ahead !== null) limit = Math.min(limit, ahead - sz - gap);
-        if(target > limit){ target = limit; m.stuck = !m.passed; m.age += dt/16; }
-        else { m.stuck = false; }
-        m.x = target;
-        ahead = m.x;
-      });
-      /* the gate lets one through roughly every 1.6 s */
-      if(Math.random() < dt/1600){
-        for(var q=0;q<manual.length;q++){
-          if(manual[q].stuck && !manual[q].passed){
-            manual[q].passed = true; manual[q].stuck = false; manual[q].s = 1.9; break;
-          }
-        }
-      }
-      manual = manual.filter(function(m){ return m.x < W + sz; });
-      queued = manual.filter(function(m){ return m.stuck; }).length;
-
-      auto.forEach(function(a){ a.x += a.s * dt/16; });
-      var before = auto.length;
-      auto = auto.filter(function(a){ return a.x < W; });
-      done += before - auto.length;
-
-      if(capA) capA.textContent = "Вручную · в очереди " + queued;
-      if(capB) capB.textContent = "С Fabrestra · обработано " + done;
-
-      draw();
-      requestAnimationFrame(step);
-    }
-
-    function seed(){
-      var gate = W*0.66, sz = 13, i;
-      manual = []; auto = [];
-      for(i=0;i<6;i++) manual.push({x:gate-sz-1-i*17, s:0.95, stuck:true, passed:false, age:130});
-      for(i=0;i<4;i++) manual.push({x:gate-sz-1-6*17-44-i*46, s:0.95, stuck:false, passed:false, age:0});
-      for(i=0;i<5;i++) auto.push({x:22+i*78, s:1.8});
-      queued = 6; done = 12;
-      if(capA) capA.textContent = "Вручную · в очереди " + queued;
-      if(capB) capB.textContent = "С Fabrestra · обработано " + done;
-    }
-
-    size();
-    seed();
-    draw();
-    window.addEventListener("resize", function(){ size(); draw(); });
-
-    if(!reduce) requestAnimationFrame(step);
-  }
-
-  /* ---------- mini graphics on work cards (не используется: макеты на CSS) ---------- */
-  [].forEach.call([], function(c){
-    var x = c.getContext("2d");
-    function paint(){
-      var d = Math.min(window.devicePixelRatio||1,2);
-      var w = c.clientWidth, h = c.clientHeight;
-      c.width = w*d; c.height = h*d; x.setTransform(d,0,0,d,0,0);
-      var acc = css("--accent"), line = css("--line"), dim = css("--ink-dim");
-      x.clearRect(0,0,w,h);
-      var kind = c.dataset.kind;
-      if(kind === "grid"){
-        var cols = 9, rows = 5, gw = (w-40)/cols, gh = (h-40)/rows;
-        for(var i=0;i<cols;i++) for(var j=0;j<rows;j++){
-          var lit = ((i*7+j*3) % 5 === 0);
-          x.fillStyle = lit ? acc : line;
-          x.globalAlpha = lit ? .9 : .55;
-          x.fillRect(20+i*gw, 20+j*gh, gw-5, gh-5);
-        }
-        x.globalAlpha = 1;
-      } else if(kind === "bars"){
-        var vals = [.35,.55,.42,.78,.62,.9,.7];
-        vals.forEach(function(v,i){
-          var bw = (w-44)/vals.length;
-          x.fillStyle = i===5 ? acc : line;
-          x.globalAlpha = i===5 ? .9 : .6;
-          x.fillRect(22+i*bw, h-18-(h-46)*v, bw-7, (h-46)*v);
-        });
-        x.globalAlpha = 1;
-      } else {
-        var pts = [[22,h*.5],[w*.32,h*.5],[w*.32,h*.24],[w*.62,h*.24],[w*.62,h*.76],[w-22,h*.76]];
-        x.strokeStyle = line; x.lineWidth = 2;
-        x.beginPath(); x.moveTo(pts[0][0],pts[0][1]);
-        for(var k=1;k<pts.length;k++) x.lineTo(pts[k][0],pts[k][1]);
-        x.stroke();
-        pts.forEach(function(p,i){
-          x.fillStyle = (i===0||i===pts.length-1) ? acc : line;
-          x.beginPath(); x.arc(p[0],p[1],4.5,0,Math.PI*2); x.fill();
-        });
-      }
-    }
-    paint();
-    window.addEventListener("resize", paint);
-  });
-})();
-</script>
-
+  <script src="kinetic.js" defer></script>
 </body>
 </html>

@@ -1,30 +1,12 @@
-# ГЛАВНОЕ ПРАВИЛО
-# Всё рабочее лежит в _rabota и в публичный репозиторий не попадает никогда.
-# Списки компаний, тексты писем, планы, передача дел - всё туда.
-# В корне остаётся только то, из чего собирается сайт.
-_rabota/
-
-# рабочие файлы — не для публикации
-spisok-kompaniy.xlsx
-*.xlsx
-.~lock.*#
-
-# бот живёт в отдельном репозитории
-bot/
-
-# служебные превью
-brand/_*.png
-
-# прочее
-__pycache__/
+# Site files only. Private material lives outside this repository.
 .env
-results.db
-venv/
-
-# staging для заливки на сервер, живёт только локально
-deploy/
-deploy.ps1
-
-# рабочие документы: списки целей, тексты писем
-*.md
-!README.md
+.env.*
+*.key
+*.pem
+*.sqlite
+*.sqlite3
+*.db
+__pycache__/
+node_modules/
+.DS_Store
+Thumbs.db

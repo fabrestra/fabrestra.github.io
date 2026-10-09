@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /demos/
+Disallow: /samples/
+Disallow: /redesign/
+Disallow: /mini.html
+Sitemap: https://fabrestra.com/sitemap.xml
