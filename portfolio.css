@@ -36,5 +36,6 @@ h2{font-size:30px;letter-spacing:-.015em}
 @media(max-width:700px){.nav{min-height:90px}.brand{font-size:25px}.brand span{font-size:9px}.intro{padding-top:36px}.visual{height:225px}.cardbody{padding-top:18px}.report-visual strong{font-size:38px}.closing{padding:24px}.draft-note{padding:8px 18px}.panel.wide{padding:20px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 .empty-state{grid-column:1/-1;padding:40px;border:1px solid var(--line)}
+.project-cover .cover-poster{display:block;width:100%;height:100%;object-fit:contain;background:#e8e4da}.cover-still .cover-poster{object-position:center}.project-cover:has(.cover-poster){padding:0;display:block}
 .reading{max-width:760px;padding:50px 0}.reading p,.reading li{color:var(--muted);line-height:1.85}.reading h2{margin:42px 0 16px}.reading aside{border-left:3px solid var(--accent);padding:16px 22px;background:var(--soft)}
 .article-card{padding:28px;border-top:1px solid var(--line)}.article-card p{color:var(--muted)}.service-detail{padding:36px 0;border-top:1px solid var(--line)}.service-detail .price{font:500 38px 'Oswald',sans-serif;color:var(--accent)}.service-detail p,.service-detail li{color:var(--muted)}.footer a{display:inline-block;margin-bottom:8px;overflow-wrap:anywhere}
